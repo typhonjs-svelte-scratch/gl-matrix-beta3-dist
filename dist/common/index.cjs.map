@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../src/common/index.ts"],
+  "sourcesContent": ["/**\r\n * Provides common resources and constants shared across `gl-matrix`.\r\n *\r\n * @packageDocumentation\r\n */\r\n\r\n/**\r\n * A small constant used to determine the acceptable error margin in floating-point calculations.\r\n */\r\nexport const GLM_EPSILON: number = 0.000001;\r\n"],
+  "mappings": ";;;;;;;;;;;;;;;;;;;;AAAA;;;;;;",
+  "names": []
+}

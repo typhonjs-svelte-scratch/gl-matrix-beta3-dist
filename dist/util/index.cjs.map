@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../src/util/index.ts", "../../src/util/angleConversion.ts"],
+  "sourcesContent": ["/**\r\n * Provides optional utilities useful for working with `gl-matrix`.\r\n *\r\n * ```js\r\n * import { toDegree, toRadian } from 'gl-matrix/util';\r\n *\r\n * const rad = toRadian(180);\r\n * ```\r\n *\r\n * @packageDocumentation\r\n */\r\n\r\nexport * from './angleConversion.js';\r\n", "/**\r\n * Constant used in `gl-matrix` angle conversions.\r\n */\r\nconst GLM_DEG_TO_RAD: number = Math.PI / 180;\r\n\r\n/**\r\n * Constant used in `gl-matrix` angle conversions.\r\n */\r\nconst GLM_RAD_TO_DEG: number = 180 / Math.PI;\r\n\r\n/**\r\n * Convert `radians` to `degrees`.\r\n *\r\n * @param value - Angle in `radians`.\r\n * @returns Angle in `degrees`.\r\n */\r\nexport function toDegree(value: number): number {\r\n  return value * GLM_RAD_TO_DEG;\r\n}\r\n\r\n/**\r\n * Convert `degrees` to `radians`.\r\n *\r\n * @param value - Angle in `degrees`.\r\n * @returns Angle in `radians`.\r\n */\r\nexport function toRadian(value: number): number {\r\n  return value * GLM_DEG_TO_RAD;\r\n}\r\n"],
+  "mappings": ";;;;;;;;;;;;;;;;;;;;AAAA;;;;;;;;ACKA,IAAA,iBAAA,KAAA,KAAA;AAKA,IAAA,iBAAA,MAAA,KAAA;AAOE,SAAY,SAAG,OAAA;AAChB,SAAA,QAAA;AAED;AAOE,SAAY,SAAG,OAAA;AAChB,SAAA,QAAA;;",
+  "names": []
+}
