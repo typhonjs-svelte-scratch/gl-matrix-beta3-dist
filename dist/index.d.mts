@@ -29,6 +29,8 @@ declare class Mat2 extends Float32Array {
   #private;
   /**
    * Create a {@link Mat2}.
+   *
+   * @category Constructor
    */
   constructor(...values: [Readonly<Mat2Like> | ArrayBufferLike, number?] | number[]);
   /**
@@ -95,6 +97,8 @@ declare class Mat2 extends Float32Array {
    */
   rotate(rad: number): Mat2;
   /**
+   * @category Static
+   *
    * @returns The number of bytes in a {@link Mat2}.
    */
   static get BYTE_LENGTH(): number;
@@ -347,6 +351,8 @@ declare class Mat2d extends Float32Array {
   #private;
   /**
    * Create a {@link Mat2}.
+   *
+   * @category Constructor
    */
   constructor(...values: [Readonly<Mat2dLike> | ArrayBufferLike, number?] | number[]);
   /**
@@ -407,6 +413,8 @@ declare class Mat2d extends Float32Array {
    */
   scale(v: Readonly<Vec2Like>): Mat2d;
   /**
+   * @category Static
+   *
    * @returns The number of bytes in a {@link Mat2d}.
    */
   static get BYTE_LENGTH(): number;
@@ -649,6 +657,8 @@ declare class Mat3 extends Float32Array {
   #private;
   /**
    * Create a {@link Mat3}.
+   *
+   * @category Constructor
    */
   constructor(...values: [Readonly<Mat3Like> | ArrayBufferLike, number?] | number[]);
   /**
@@ -723,6 +733,8 @@ declare class Mat3 extends Float32Array {
    */
   scale(v: Readonly<Vec2Like>): Mat3;
   /**
+   * @category Static
+   *
    * @returns The number of bytes in a {@link Mat3}.
    */
   static get BYTE_LENGTH(): number;
@@ -1042,6 +1054,8 @@ declare class Mat4 extends Float32Array {
   #private;
   /**
    * Create a {@link Mat4}.
+   *
+   * @category Constructor
    */
   constructor(...values: [Readonly<Mat4Like> | ArrayBufferLike, number?] | number[]);
   /**
@@ -1199,6 +1213,8 @@ declare class Mat4 extends Float32Array {
    */
   orthoZO(left: number, right: number, bottom: number, top: number, near: number, far: number): Mat4;
   /**
+   * @category Static
+   *
    * @returns The number of bytes in a {@link Mat4}.
    */
   static get BYTE_LENGTH(): number;
@@ -1886,6 +1902,8 @@ declare class Quat extends Float32Array {
   #private;
   /**
    * Create a {@link Quat}.
+   *
+   * @category Constructor
    */
   constructor(...values: [Readonly<QuatLike> | ArrayBufferLike, number?] | number[]);
   /**
@@ -2005,6 +2023,8 @@ declare class Quat extends Float32Array {
    */
   dot(b: Readonly<QuatLike>): number;
   /**
+   * @category Static
+   *
    * @returns The number of bytes in a {@link Quat}.
    */
   static get BYTE_LENGTH(): number;
@@ -2412,6 +2432,8 @@ declare class Quat2 extends Float32Array {
   #private;
   /**
    * Create a {@link Quat2}.
+   *
+   * @category Constructor
    */
   constructor(...values: [Readonly<Quat2Like> | ArrayBufferLike, number?] | number[]);
   /**
@@ -2427,6 +2449,8 @@ declare class Quat2 extends Float32Array {
    */
   copy(a: Readonly<Quat2Like>): Quat2;
   /**
+   * @category Static
+   *
    * @returns The number of bytes in a {@link Quat2}.
    */
   static get BYTE_LENGTH(): number;
@@ -2843,6 +2867,8 @@ declare class Quat2 extends Float32Array {
 declare class Vec2 extends Float32Array {
   /**
    * Create a {@link Vec2}.
+   *
+   * @category Constructor
    */
   constructor(...values: [Readonly<Vec2Like> | ArrayBufferLike, number?] | number[]);
   /**
@@ -3024,6 +3050,8 @@ declare class Vec2 extends Float32Array {
    */
   normalize(): Vec2;
   /**
+   * @category Static
+   *
    * @returns The number of bytes in a {@link Vec2}.
    */
   static get BYTE_LENGTH(): number;
@@ -3430,6 +3458,8 @@ declare class Vec2 extends Float32Array {
 declare class Vec3 extends Float32Array {
   /**
    * Create a {@link Vec3}.
+   *
+   * @category Constructor
    */
   constructor(...values: [Readonly<Vec3Like> | ArrayBufferLike, number?] | number[]);
   /**
@@ -3623,6 +3653,8 @@ declare class Vec3 extends Float32Array {
    */
   normalize(): Vec3;
   /**
+   * @category Static
+   *
    * @returns The number of bytes in a {@link Vec3}.
    */
   static get BYTE_LENGTH(): number;
@@ -4092,6 +4124,8 @@ declare class Vec3 extends Float32Array {
 declare class Vec4 extends Float32Array {
   /**
    * Create a {@link Vec4}.
+   *
+   * @category Constructor
    */
   constructor(...values: [Readonly<Vec4Like> | ArrayBufferLike, number?] | number[]);
   /**
@@ -4288,6 +4322,8 @@ declare class Vec4 extends Float32Array {
    */
   normalize(): Vec4;
   /**
+   * @category Static
+   *
    * @returns The number of bytes in a {@link Vec4}.
    */
   static get BYTE_LENGTH(): number;

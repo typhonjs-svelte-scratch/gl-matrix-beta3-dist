@@ -11,6 +11,8 @@ export class Mat2d extends Float64Array {
     ]);
     /**
      * Create a {@link Mat2}.
+     *
+     * @category Constructor
      */
     constructor(...values) {
         switch (values.length) {
@@ -121,6 +123,8 @@ export class Mat2d extends Float64Array {
     // Static accessors
     //===================
     /**
+     * @category Static
+     *
      * @returns The number of bytes in a {@link Mat2d}.
      */
     static get BYTE_LENGTH() {

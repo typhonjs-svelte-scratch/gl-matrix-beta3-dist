@@ -10,6 +10,8 @@ export class Mat2 extends Float32Array {
     ]);
     /**
      * Create a {@link Mat2}.
+     *
+     * @category Constructor
      */
     constructor(...values) {
         switch (values.length) {
@@ -127,6 +129,8 @@ export class Mat2 extends Float32Array {
     // Static accessors
     //===================
     /**
+     * @category Static
+     *
      * @returns The number of bytes in a {@link Mat2}.
      */
     static get BYTE_LENGTH() {

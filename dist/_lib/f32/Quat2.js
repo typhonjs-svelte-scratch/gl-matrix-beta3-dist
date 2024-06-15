@@ -12,6 +12,8 @@ export class Quat2 extends Float32Array {
     static #TMP_VEC3 = new Float32Array(3);
     /**
      * Create a {@link Quat2}.
+     *
+     * @category Constructor
      */
     constructor(...values) {
         switch (values.length) {
@@ -64,6 +66,8 @@ export class Quat2 extends Float32Array {
     // Static accessors
     //===================
     /**
+     * @category Static
+     *
      * @returns The number of bytes in a {@link Quat2}.
      */
     static get BYTE_LENGTH() {

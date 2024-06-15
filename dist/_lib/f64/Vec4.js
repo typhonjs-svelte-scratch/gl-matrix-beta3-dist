@@ -6,6 +6,8 @@ import { GLM_EPSILON } from 'gl-matrix/common';
 export class Vec4 extends Float64Array {
     /**
      * Create a {@link Vec4}.
+     *
+     * @category Constructor
      */
     constructor(...values) {
         switch (values.length) {
@@ -310,6 +312,8 @@ export class Vec4 extends Float64Array {
     // Static accessors
     //===================
     /**
+     * @category Static
+     *
      * @returns The number of bytes in a {@link Vec4}.
      */
     static get BYTE_LENGTH() {

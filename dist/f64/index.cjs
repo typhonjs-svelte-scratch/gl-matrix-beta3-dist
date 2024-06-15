@@ -43,6 +43,8 @@ var Mat2 = class _Mat2 extends Float64Array {
   ]);
   /**
    * Create a {@link Mat2}.
+   *
+   * @category Constructor
    */
   constructor(...values) {
     switch (values.length) {
@@ -163,6 +165,8 @@ var Mat2 = class _Mat2 extends Float64Array {
   // Static accessors
   //===================
   /**
+   * @category Static
+   *
    * @returns The number of bytes in a {@link Mat2}.
    */
   static get BYTE_LENGTH() {
@@ -586,6 +590,8 @@ var Mat2d = class _Mat2d extends Float64Array {
   ]);
   /**
    * Create a {@link Mat2}.
+   *
+   * @category Constructor
    */
   constructor(...values) {
     switch (values.length) {
@@ -700,6 +706,8 @@ var Mat2d = class _Mat2d extends Float64Array {
   // Static accessors
   //===================
   /**
+   * @category Static
+   *
    * @returns The number of bytes in a {@link Mat2d}.
    */
   static get BYTE_LENGTH() {
@@ -1160,6 +1168,8 @@ var Mat3 = class _Mat3 extends Float64Array {
   ]);
   /**
    * Create a {@link Mat3}.
+   *
+   * @category Constructor
    */
   constructor(...values) {
     switch (values.length) {
@@ -1295,6 +1305,8 @@ var Mat3 = class _Mat3 extends Float64Array {
   // Static accessors
   //===================
   /**
+   * @category Static
+   *
    * @returns The number of bytes in a {@link Mat3}.
    */
   static get BYTE_LENGTH() {
@@ -2075,6 +2087,8 @@ var Mat4 = class _Mat4 extends Float64Array {
   static #TMP_VEC3 = new Float64Array(3);
   /**
    * Create a {@link Mat4}.
+   *
+   * @category Constructor
    */
   constructor(...values) {
     switch (values.length) {
@@ -2314,6 +2328,8 @@ var Mat4 = class _Mat4 extends Float64Array {
   // Static accessors
   //===================
   /**
+   * @category Static
+   *
    * @returns The number of bytes in a {@link Mat4}.
    */
   static get BYTE_LENGTH() {
@@ -4289,6 +4305,8 @@ var import_common5 = require("gl-matrix/common");
 var Vec3 = class _Vec3 extends Float64Array {
   /**
    * Create a {@link Vec3}.
+   *
+   * @category Constructor
    */
   constructor(...values) {
     switch (values.length) {
@@ -4622,6 +4640,8 @@ var Vec3 = class _Vec3 extends Float64Array {
   // Static accessors
   //===================
   /**
+   * @category Static
+   *
    * @returns The number of bytes in a {@link Vec3}.
    */
   static get BYTE_LENGTH() {
@@ -5378,6 +5398,8 @@ var import_common6 = require("gl-matrix/common");
 var Vec4 = class _Vec4 extends Float64Array {
   /**
    * Create a {@link Vec4}.
+   *
+   * @category Constructor
    */
   constructor(...values) {
     switch (values.length) {
@@ -5725,6 +5747,8 @@ var Vec4 = class _Vec4 extends Float64Array {
   // Static accessors
   //===================
   /**
+   * @category Static
+   *
    * @returns The number of bytes in a {@link Vec4}.
    */
   static get BYTE_LENGTH() {
@@ -6388,6 +6412,8 @@ var Quat = class _Quat extends Float64Array {
   static #Y_UNIT_VEC3 = new Float64Array([0, 1, 0]);
   /**
    * Create a {@link Quat}.
+   *
+   * @category Constructor
    */
   constructor(...values) {
     switch (values.length) {
@@ -6595,6 +6621,8 @@ var Quat = class _Quat extends Float64Array {
   // Static accessors
   //===================
   /**
+   * @category Static
+   *
    * @returns The number of bytes in a {@link Quat}.
    */
   static get BYTE_LENGTH() {
@@ -7354,6 +7382,8 @@ var Quat2 = class _Quat2 extends Float64Array {
   static #TMP_VEC3 = new Float64Array(3);
   /**
    * Create a {@link Quat2}.
+   *
+   * @category Constructor
    */
   constructor(...values) {
     switch (values.length) {
@@ -7405,6 +7435,8 @@ var Quat2 = class _Quat2 extends Float64Array {
   // Static accessors
   //===================
   /**
+   * @category Static
+   *
    * @returns The number of bytes in a {@link Quat2}.
    */
   static get BYTE_LENGTH() {
@@ -8228,6 +8260,8 @@ var import_common9 = require("gl-matrix/common");
 var Vec2 = class _Vec2 extends Float64Array {
   /**
    * Create a {@link Vec2}.
+   *
+   * @category Constructor
    */
   constructor(...values) {
     switch (values.length) {
@@ -8532,6 +8566,8 @@ var Vec2 = class _Vec2 extends Float64Array {
   // Static accessors
   //===================
   /**
+   * @category Static
+   *
    * @returns The number of bytes in a {@link Vec2}.
    */
   static get BYTE_LENGTH() {

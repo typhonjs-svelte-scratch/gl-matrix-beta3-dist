@@ -17,6 +17,8 @@ export class Quat extends Float64Array {
     static #Y_UNIT_VEC3 = new Float64Array([0, 1, 0]);
     /**
      * Create a {@link Quat}.
+     *
+     * @category Constructor
      */
     constructor(...values) {
         switch (values.length) {
@@ -205,6 +207,8 @@ export class Quat extends Float64Array {
     // Static accessors
     //===================
     /**
+     * @category Static
+     *
      * @returns The number of bytes in a {@link Quat}.
      */
     static get BYTE_LENGTH() {
