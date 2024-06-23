@@ -1,6 +1,19 @@
 {
-  "categoryOrder": ["Constructor", "Static", "Member", "*", "Swizzle API"],
-  "defaultCategory": "Member",
+  "name": "gl-matrix (Node / NPM Distribution)",
+  "basePath": ".",
+  "exclude": ["dist-cdn/types/*"],
+  "categoryOrder": [
+    "Constructor",
+    "Static",
+    "Accessors",
+    "Methods",
+    "Color Components",
+    "Vector Components",
+    "Quaternion Components",
+    "Swizzle Accessors (Optional)",
+    "*"
+  ],
+  "defaultCategory": "Inherited",
   "dmtLinksIcon": [
     {
       "icon": "./assets/icon/gl-matrix-icon-mono-64.webp",
@@ -11,5 +24,8 @@
   "dmtLinksService": {
     "GitHub": "https://github.com/toji/gl-matrix",
     "NPM": "https://www.npmjs.com/package/gl-matrix"
+  },
+  "sidebarLinks": {
+    "Go to: CDN Distribution": "https://typhonjs-svelte-scratch.github.io/gl-matrix-beta3-dist/cdn"
   }
 }

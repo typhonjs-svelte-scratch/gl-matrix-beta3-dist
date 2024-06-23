@@ -12,7 +12,7 @@ export class Vec4 extends Float32Array {
    * @category Constructor
    */
   constructor(...values: [Readonly<Vec4Like> | ArrayBufferLike, number?] | number[]) {
-    switch(values.length) {
+    switch (values.length) {
       case 4:
         super(values); break;
       case 2:
@@ -31,37 +31,37 @@ export class Vec4 extends Float32Array {
     }
   }
 
-  //============
-  // Attributes
-  //============
+  // ============
+  // Accessors
+  // ============
 
   // Getters and setters to make component access read better.
   // These are likely to be a little bit slower than direct array access.
 
   /**
    * The x component of the vector. Equivalent to `this[0];`
-   * @category Vector components
+   * @category Vector Components
    */
   get x(): number { return this[0]; }
   set x(value: number) { this[0] = value; }
 
   /**
    * The y component of the vector. Equivalent to `this[1];`
-   * @category Vector components
+   * @category Vector Components
    */
   get y(): number { return this[1]; }
   set y(value: number) { this[1] = value; }
 
   /**
    * The z component of the vector. Equivalent to `this[2];`
-   * @category Vector components
+   * @category Vector Components
    */
   get z(): number { return this[2]; }
   set z(value: number) { this[2] = value; }
 
   /**
    * The w component of the vector. Equivalent to `this[3];`
-   * @category Vector components
+   * @category Vector Components
    */
   get w(): number { return this[3]; }
   set w(value: number) { this[3] = value; }
@@ -71,28 +71,28 @@ export class Vec4 extends Float32Array {
 
   /**
    * The r component of the vector. Equivalent to `this[0];`
-   * @category Color components
+   * @category Color Components
    */
   get r(): number { return this[0]; }
   set r(value: number) { this[0] = value; }
 
   /**
    * The g component of the vector. Equivalent to `this[1];`
-   * @category Color components
+   * @category Color Components
    */
   get g(): number { return this[1]; }
   set g(value: number) { this[1] = value; }
 
   /**
    * The b component of the vector. Equivalent to `this[2];`
-   * @category Color components
+   * @category Color Components
    */
   get b(): number { return this[2]; }
   set b(value: number) { this[2] = value; }
 
   /**
    * The a component of the vector. Equivalent to `this[3];`
-   * @category Color components
+   * @category Color Components
    */
   get a(): number { return this[3]; }
   set a(value: number) { this[3] = value; }
@@ -103,6 +103,8 @@ export class Vec4 extends Float32Array {
    *
    * Magnitude is used because the `length` attribute is already defined by
    * TypedArrays to mean the number of elements in the array.
+   *
+   * @category Accessors
    */
   get magnitude(): number {
     const x = this[0];
@@ -114,28 +116,33 @@ export class Vec4 extends Float32Array {
 
   /**
    * Alias for {@link Vec4.magnitude}
+   *
+   * @category Accessors
    */
   get mag(): number { return this.magnitude; }
 
   /**
    * A string representation of `this`
    * Equivalent to `Vec4.str(this);`
+   *
+   * @category Accessors
    */
   get str(): string {
     return Vec4.str(this);
   }
 
-  //===================
+  // ===================
   // Instances methods
-  //===================
+  // ===================
 
   /**
    * Copy the values from another {@link Vec4} into `this`.
+   * @category Methods
    *
    * @param a the source vector
    * @returns `this`
    */
-  copy(a: Readonly<Vec4Like>): Vec4 {
+  copy(a: Readonly<Vec4Like>): this {
     super.set(a);
     return this;
   }
@@ -143,11 +150,12 @@ export class Vec4 extends Float32Array {
   /**
    * Adds a {@link Vec4} to `this`.
    * Equivalent to `Vec4.add(this, this, b);`
+   * @category Methods
    *
    * @param b - The vector to add to `this`
    * @returns `this`
    */
-  add(b: Readonly<Vec4Like>): Vec4 {
+  add(b: Readonly<Vec4Like>): this {
     this[0] += b[0];
     this[1] += b[1];
     this[2] += b[2];
@@ -158,11 +166,12 @@ export class Vec4 extends Float32Array {
   /**
    * Subtracts a {@link Vec4} from `this`.
    * Equivalent to `Vec4.subtract(this, this, b);`
+   * @category Methods
    *
    * @param b - The vector to subtract from `this`
    * @returns `this`
    */
-   subtract(b: Readonly<Vec4Like>): Vec4 {
+  subtract(b: Readonly<Vec4Like>): this {
     this[0] -= b[0];
     this[1] -= b[1];
     this[2] -= b[2];
@@ -172,17 +181,19 @@ export class Vec4 extends Float32Array {
 
   /**
    * Alias for {@link Vec4.subtract}
+   * @category Methods
    */
-  sub(b: Readonly<Vec4Like>): Vec4 { return this; }
+  sub(b: Readonly<Vec4Like>): this { return this; } // eslint-disable-line @typescript-eslint/no-unused-vars
 
   /**
    * Multiplies `this` by a {@link Vec4}.
    * Equivalent to `Vec4.multiply(this, this, b);`
+   * @category Methods
    *
    * @param b - The vector to multiply `this` by
    * @returns `this`
    */
-  multiply(b: Readonly<Vec4Like>): Vec4 {
+  multiply(b: Readonly<Vec4Like>): this {
     this[0] *= b[0];
     this[1] *= b[1];
     this[2] *= b[2];
@@ -192,17 +203,19 @@ export class Vec4 extends Float32Array {
 
   /**
    * Alias for {@link Vec4.multiply}
+   * @category Methods
    */
-  mul(b: Readonly<Vec4Like>): Vec4 { return this; }
+  mul(b: Readonly<Vec4Like>): this { return this; } // eslint-disable-line @typescript-eslint/no-unused-vars
 
   /**
    * Divides `this` by a {@link Vec4}.
    * Equivalent to `Vec4.divide(this, this, b);`
+   * @category Methods
    *
    * @param b - The vector to divide `this` by
    * @returns `this`
    */
-  divide(b: Readonly<Vec4Like>): Vec4 {
+  divide(b: Readonly<Vec4Like>): this {
     this[0] /= b[0];
     this[1] /= b[1];
     this[2] /= b[2];
@@ -212,17 +225,19 @@ export class Vec4 extends Float32Array {
 
   /**
    * Alias for {@link Vec4.divide}
+   * @category Methods
    */
-  div(b: Readonly<Vec4Like>): Vec4 { return this; }
+  div(b: Readonly<Vec4Like>): this { return this; } // eslint-disable-line @typescript-eslint/no-unused-vars
 
   /**
    * Scales `this` by a scalar number.
    * Equivalent to `Vec4.scale(this, this, b);`
+   * @category Methods
    *
    * @param b - Amount to scale `this` by
    * @returns `this`
    */
-  scale(b: number): Vec4 {
+  scale(b: number): this {
     this[0] *= b;
     this[1] *= b;
     this[2] *= b;
@@ -233,12 +248,13 @@ export class Vec4 extends Float32Array {
   /**
    * Calculates `this` scaled by a scalar value then adds the result to `this`.
    * Equivalent to `Vec4.scaleAndAdd(this, this, b, scale);`
+   * @category Methods
    *
    * @param b - The vector to add to `this`
    * @param scale - The amount to scale `b` by before adding
    * @returns `this`
    */
-  scaleAndAdd(b: Readonly<Vec4Like>, scale: number): Vec4 {
+  scaleAndAdd(b: Readonly<Vec4Like>, scale: number): this {
     this[0] += b[0] * scale;
     this[1] += b[1] * scale;
     this[2] += b[2] * scale;
@@ -247,8 +263,9 @@ export class Vec4 extends Float32Array {
   }
 
   /**
-   * Calculates the euclidian distance between another {@link Vec4} and `this`.
+   * Calculates the Euclidean distance between another {@link Vec4} and `this`.
    * Equivalent to `Vec4.distance(this, b);`
+   * @category Methods
    *
    * @param b - The vector to calculate the distance to
    * @returns Distance between `this` and `b`
@@ -256,14 +273,17 @@ export class Vec4 extends Float32Array {
   distance(b: Readonly<Vec4Like>): number {
     return Vec4.distance(this, b);
   }
-  /**
-   * Alias for {@link Vec4.distance}
-   */
-  dist(b: Readonly<Vec4Like>): number { return 0; }
 
   /**
-   * Calculates the squared euclidian distance between another {@link Vec4} and `this`.
+   * Alias for {@link Vec4.distance}
+   * @category Methods
+   */
+  dist(b: Readonly<Vec4Like>): number { return 0; } // eslint-disable-line @typescript-eslint/no-unused-vars
+
+  /**
+   * Calculates the squared Euclidean distance between another {@link Vec4} and `this`.
    * Equivalent to `Vec4.squaredDistance(this, b);`
+   * @category Methods
    *
    * @param b The vector to calculate the squared distance to
    * @returns Squared distance between `this` and `b`
@@ -271,18 +291,21 @@ export class Vec4 extends Float32Array {
   squaredDistance(b: Readonly<Vec4Like>): number {
     return Vec4.squaredDistance(this, b);
   }
+
   /**
    * Alias for {@link Vec4.squaredDistance}
+   * @category Methods
    */
-  sqrDist(b: Readonly<Vec4Like>): number { return 0; }
+  sqrDist(b: Readonly<Vec4Like>): number { return 0; }  // eslint-disable-line @typescript-eslint/no-unused-vars
 
   /**
    * Negates the components of `this`.
    * Equivalent to `Vec4.negate(this, this);`
+   * @category Methods
    *
    * @returns `this`
    */
-  negate(): Vec4 {
+  negate(): this {
     this[0] *= -1;
     this[1] *= -1;
     this[2] *= -1;
@@ -293,10 +316,11 @@ export class Vec4 extends Float32Array {
   /**
    * Inverts the components of `this`.
    * Equivalent to `Vec4.inverse(this, this);`
+   * @category Methods
    *
    * @returns `this`
    */
-  invert(): Vec4 {
+  invert(): this {
     this[0] = 1.0 / this[0];
     this[1] = 1.0 / this[1];
     this[2] = 1.0 / this[2];
@@ -307,10 +331,11 @@ export class Vec4 extends Float32Array {
   /**
    * Sets each component of `this` to it's absolute value.
    * Equivalent to `Vec4.abs(this, this);`
+   * @category Methods
    *
    * @returns `this`
    */
-  abs(): Vec4 {
+  abs(): this {
     this[0] = Math.abs(this[0]);
     this[1] = Math.abs(this[1]);
     this[2] = Math.abs(this[2]);
@@ -321,6 +346,7 @@ export class Vec4 extends Float32Array {
   /**
    * Calculates the dot product of this and another {@link Vec4}.
    * Equivalent to `Vec4.dot(this, b);`
+   * @category Methods
    *
    * @param b - The second operand
    * @returns Dot product of `this` and `b`
@@ -332,16 +358,17 @@ export class Vec4 extends Float32Array {
   /**
    * Normalize `this`.
    * Equivalent to `Vec4.normalize(this, this);`
+   * @category Methods
    *
    * @returns `this`
    */
-  normalize(): Vec4 {
-    return Vec4.normalize(this, this) as Vec4;
+  normalize(): this {
+    return Vec4.normalize(this, this) as this;
   }
 
-  //===================
+  // ===================
   // Static accessors
-  //===================
+  // ===================
 
   /**
    * @category Static
@@ -352,9 +379,9 @@ export class Vec4 extends Float32Array {
     return 4 * Float32Array.BYTES_PER_ELEMENT;
   }
 
-  //===================
+  // ===================
   // Static methods
-  //===================
+  // ===================
 
   /**
    * Creates a new, empty {@link Vec4}
@@ -464,6 +491,7 @@ export class Vec4 extends Float32Array {
    * Alias for {@link Vec4.subtract}
    * @category Static
    */
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   static sub(out: Vec4Like, a: Readonly<Vec4Like>, b: Readonly<Vec4Like>): Vec4Like { return out; }
 
   /**
@@ -487,6 +515,7 @@ export class Vec4 extends Float32Array {
    * Alias for {@link Vec4.multiply}
    * @category Static
    */
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   static mul(out: Vec4Like, a: Readonly<Vec4Like>, b: Readonly<Vec4Like>): Vec4Like { return out; }
 
   /**
@@ -510,6 +539,7 @@ export class Vec4 extends Float32Array {
    * Alias for {@link Vec4.divide}
    * @category Static
    */
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   static div(out: Vec4Like, a: Readonly<Vec4Like>, b: Readonly<Vec4Like>): Vec4Like { return out; }
 
   /**
@@ -630,7 +660,7 @@ export class Vec4 extends Float32Array {
   }
 
   /**
-   * Calculates the euclidian distance between two {@link Vec4}'s
+   * Calculates the Euclidean distance between two {@link Vec4}'s
    * @category Static
    *
    * @param a - the first operand
@@ -648,10 +678,11 @@ export class Vec4 extends Float32Array {
    * Alias for {@link Vec4.distance}
    * @category Static
    */
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   static dist(a: Readonly<Vec4Like>, b: Readonly<Vec4Like>): number { return 0; }
 
   /**
-   * Calculates the squared euclidian distance between two {@link Vec4}'s
+   * Calculates the squared Euclidean distance between two {@link Vec4}'s
    * @category Static
    *
    * @param a - the first operand
@@ -669,6 +700,7 @@ export class Vec4 extends Float32Array {
    * Alias for {@link Vec4.squaredDistance}
    * @category Static
    */
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   static sqrDist(a: Readonly<Vec4Like>, b: Readonly<Vec4Like>): number { return 0; }
 
   /**
@@ -689,22 +721,22 @@ export class Vec4 extends Float32Array {
    * Alias for {@link Vec4.magnitude}
    * @category Static
    */
-  static mag(a: Readonly<Vec4Like>): number { return 0; }
+  static mag(a: Readonly<Vec4Like>): number { return 0; } // eslint-disable-line @typescript-eslint/no-unused-vars
 
   /**
    * Alias for {@link Vec4.magnitude}
    * @category Static
    * @deprecated Use {@link Vec4.magnitude} to avoid conflicts with builtin `length` methods/attribs
    */
-  // @ts-ignore: Length conflicts with Function.length
-  static length(a: Readonly<Vec4Like>): number { return 0; }
+  // Length conflicts with Function.length
+  static length(a: Readonly<Vec4Like>): number { return 0; }  // eslint-disable-line @typescript-eslint/no-unused-vars
 
   /**
    * Alias for {@link Vec4.magnitude}
    * @category Static
    * @deprecated Use {@link Vec4.mag}
    */
-  static len(a: Readonly<Vec4Like>): number { return 0; }
+  static len(a: Readonly<Vec4Like>): number { return 0; } // eslint-disable-line @typescript-eslint/no-unused-vars
 
   /**
    * Calculates the squared length of a {@link Vec4}
@@ -725,7 +757,7 @@ export class Vec4 extends Float32Array {
    * Alias for {@link Vec4.squaredLength}
    * @category Static
    */
-  static sqrLen(a: Readonly<Vec4Like>): number { return 0; }
+  static sqrLen(a: Readonly<Vec4Like>): number { return 0; }  // eslint-disable-line @typescript-eslint/no-unused-vars
 
   /**
    * Negates the components of a {@link Vec4}
@@ -871,7 +903,8 @@ export class Vec4 extends Float32Array {
    * @param [scale] - Length of the resulting vector. If ommitted, a unit vector will be returned
    * @returns `out`
    */
-  /*static random(out: Vec4Like, scale): Vec4Like {
+  /*
+    static random(out: Vec4Like, scale): Vec4Like {
     scale = scale || 1.0;
 
     // Marsaglia, George. Choosing a Point from the Surface of a
@@ -978,7 +1011,7 @@ export class Vec4 extends Float32Array {
   }
 
   /**
-   * Returns whether or not the vectors have exactly the same elements in the same position (when compared with ===)
+   * Returns whether the vectors have exactly the same elements in the same position (when compared with ===)
    * @category Static
    *
    * @param a - The first vector.
@@ -990,7 +1023,7 @@ export class Vec4 extends Float32Array {
   }
 
   /**
-   * Returns whether or not the vectors have approximately the same elements in the same position.
+   * Returns whether the vectors have approximately the same elements in the same position.
    * @category Static
    *
    * @param a - The first vector.
@@ -1016,11 +1049,11 @@ export class Vec4 extends Float32Array {
 }
 
 // Instance method alias assignments
-Vec4.prototype.sub = Vec4.prototype.subtract;
-Vec4.prototype.mul = Vec4.prototype.multiply;
-Vec4.prototype.div = Vec4.prototype.divide;
-Vec4.prototype.dist = Vec4.prototype.distance;
-Vec4.prototype.sqrDist = Vec4.prototype.squaredDistance;
+Vec4.prototype.sub = Vec4.prototype.subtract;             // eslint-disable-line @typescript-eslint/unbound-method
+Vec4.prototype.mul = Vec4.prototype.multiply;             // eslint-disable-line @typescript-eslint/unbound-method
+Vec4.prototype.div = Vec4.prototype.divide;               // eslint-disable-line @typescript-eslint/unbound-method
+Vec4.prototype.dist = Vec4.prototype.distance;            // eslint-disable-line @typescript-eslint/unbound-method
+Vec4.prototype.sqrDist = Vec4.prototype.squaredDistance;  // eslint-disable-line @typescript-eslint/unbound-method
 
 // Static method alias assignments
 Vec4.sub = Vec4.subtract;

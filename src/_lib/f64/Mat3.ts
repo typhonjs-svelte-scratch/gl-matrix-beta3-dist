@@ -17,8 +17,8 @@ export class Mat3 extends Float64Array {
    *
    * @category Constructor
    */
-  constructor(...values: [Readonly<Mat3Like> | ArrayBufferLike, number?] | number[] ) {
-    switch(values.length) {
+  constructor(...values: [Readonly<Mat3Like> | ArrayBufferLike, number?] | number[]) {
+    switch (values.length) {
       case 9:
         super(values); break;
       case 2:
@@ -39,29 +39,32 @@ export class Mat3 extends Float64Array {
     }
   }
 
-  //============
-  // Attributes
-  //============
+  // ============
+  // Accessors
+  // ============
 
   /**
    * A string representation of `this`
    * Equivalent to `Mat3.str(this);`
+   *
+   * @category Accessors
    */
-   get str(): string {
+  get str(): string {
     return Mat3.str(this);
   }
 
-  //===================
+  // ===================
   // Instance methods
-  //===================
+  // ===================
 
   /**
    * Copy the values from another {@link Mat3} into `this`.
+   * @category Methods
    *
    * @param a the source vector
    * @returns `this`
    */
-  copy(a: Readonly<Mat3Like>): Mat3 {
+  copy(a: Readonly<Mat3Like>): this {
     this.set(a);
     return this;
   }
@@ -69,10 +72,11 @@ export class Mat3 extends Float64Array {
   /**
    * Set `this` to the identity matrix
    * Equivalent to Mat3.identity(this)
+   * @category Methods
    *
    * @returns `this`
    */
-  identity(): Mat3 {
+  identity(): this {
     this.set(Mat3.#IDENTITY_3X3);
     return this;
   }
@@ -80,77 +84,84 @@ export class Mat3 extends Float64Array {
   /**
    * Multiplies this {@link Mat3} against another one
    * Equivalent to `Mat3.multiply(this, this, b);`
+   * @category Methods
    *
    * @param out - The receiving Matrix
    * @param a - The first operand
    * @param b - The second operand
    * @returns `this`
    */
-  multiply(b: Readonly<Mat3Like>): Mat3 {
-    return Mat3.multiply(this, this, b) as Mat3;
+  multiply(b: Readonly<Mat3Like>): this {
+    return Mat3.multiply(this, this, b) as this;
   }
 
   /**
    * Alias for {@link Mat3.multiply}
+   * @category Methods
    */
-  mul(b: Readonly<Mat3Like>): Mat3 { return this; }
+  mul(b: Readonly<Mat3Like>): this { return this; } // eslint-disable-line @typescript-eslint/no-unused-vars
 
   /**
    * Transpose this {@link Mat3}
    * Equivalent to `Mat3.transpose(this, this);`
+   * @category Methods
    *
    * @returns `this`
    */
-  transpose(): Mat3 {
-    return Mat3.transpose(this, this) as Mat3;
+  transpose(): this {
+    return Mat3.transpose(this, this) as this;
   }
 
   /**
    * Inverts this {@link Mat3}
    * Equivalent to `Mat4.invert(this, this);`
+   * @category Methods
    *
    * @returns `this`
    */
-  invert(): Mat3 {
-    return Mat3.invert(this, this) as Mat3;
+  invert(): this {
+    return Mat3.invert(this, this) as this;
   }
 
   /**
    * Translate this {@link Mat3} by the given vector
    * Equivalent to `Mat3.translate(this, this, v);`
+   * @category Methods
    *
    * @param v - The {@link Vec2} to translate by
    * @returns `this`
    */
-  translate(v: Readonly<Vec2Like>): Mat3 {
-    return Mat3.translate(this, this, v) as Mat3;
+  translate(v: Readonly<Vec2Like>): this {
+    return Mat3.translate(this, this, v) as this;
   }
 
   /**
    * Rotates this {@link Mat3} by the given angle around the given axis
    * Equivalent to `Mat3.rotate(this, this, rad);`
+   * @category Methods
    *
    * @param rad - the angle to rotate the matrix by
-   * @returns `out`
+   * @returns `this`
    */
-  rotate(rad: number): Mat3 {
-    return Mat3.rotate(this, this, rad) as Mat3;
+  rotate(rad: number): this {
+    return Mat3.rotate(this, this, rad) as this;
   }
 
   /**
    * Scales this {@link Mat3} by the dimensions in the given vec3 not using vectorization
    * Equivalent to `Mat3.scale(this, this, v);`
+   * @category Methods
    *
    * @param v - The {@link Vec2} to scale the matrix by
    * @returns `this`
    */
-  scale(v: Readonly<Vec2Like>): Mat3 {
-    return Mat3.scale(this, this, v) as Mat3;
+  scale(v: Readonly<Vec2Like>): this {
+    return Mat3.scale(this, this, v) as this;
   }
 
-  //===================
+  // ===================
   // Static accessors
-  //===================
+  // ===================
 
   /**
    * @category Static
@@ -161,9 +172,9 @@ export class Mat3 extends Float64Array {
     return 9 * Float64Array.BYTES_PER_ELEMENT;
   }
 
-  //===================
+  // ===================
   // Static methods
-  //===================
+  // ===================
 
   /**
    * Creates a new, identity {@link Mat3}
@@ -300,7 +311,7 @@ export class Mat3 extends Float64Array {
    *
    * @param out - the receiving matrix
    * @param a - the source matrix
-   * @returns `out` or `null` if the matrix is not invertable
+   * @returns `out` or `null` if the matrix is not invertible
    */
   static invert(out: Mat3Like, a: Mat3Like): Mat3Like | null {
     const a00 = a[0],
@@ -441,6 +452,7 @@ export class Mat3 extends Float64Array {
    * Alias for {@link Mat3.subtract}
    * @category Static
    */
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   static sub(out: Mat3Like, a: Readonly<Mat3Like>, b: Readonly<Mat3Like>): Mat3Like { return out; }
 
   /**
@@ -490,6 +502,7 @@ export class Mat3 extends Float64Array {
    * Alias for {@link Mat3.multiply}
    * @category Static
    */
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   static mul(out: Mat3Like, a: Readonly<Mat3Like>, b: Readonly<Mat3Like>): Mat3Like { return out; }
 
   /**
@@ -594,9 +607,10 @@ export class Mat3 extends Float64Array {
   /**
    * Creates a {@link Mat3} from a vector translation
    * This is equivalent to (but much faster than):
-   *
-   *     mat3.identity(dest);
-   *     mat3.translate(dest, dest, vec);
+   * ```js
+   *   mat3.identity(dest);
+   *   mat3.translate(dest, dest, vec);
+   * ```
    * @category Static
    *
    * @param out - {@link Mat3} receiving operation result
@@ -649,9 +663,10 @@ export class Mat3 extends Float64Array {
   /**
    * Creates a {@link Mat3} from a vector scaling
    * This is equivalent to (but much faster than):
-   *
-   *     mat3.identity(dest);
-   *     mat3.scale(dest, dest, vec);
+   * ```js
+   *   mat3.identity(dest);
+   *   mat3.scale(dest, dest, vec);
+   * ```
    * @category Static
    *
    * @param out - {@link Mat3} receiving operation result
@@ -699,6 +714,7 @@ export class Mat3 extends Float64Array {
 
   /**
    * Calculates a {@link Mat3} from the given quaternion
+   * @category Static
    *
    * @param out - {@link Mat3} receiving operation result
    * @param q - {@link Quat} to create matrix from
@@ -766,7 +782,7 @@ export class Mat3 extends Float64Array {
    *
    * @param {mat3} out mat3 receiving operation result
    * @param {ReadonlyMat4} a Mat4 to derive the normal matrix from
-   * @returns `out` or `null` if the matrix is not invertable
+   * @returns `out` or `null` if the matrix is not invertible
    */
   static normalFromMat4(out: Mat3Like, a: Readonly<Mat4Like>): Mat3Like | null {
     const a00 = a[0];
@@ -951,7 +967,7 @@ export class Mat3 extends Float64Array {
   }
 
   /**
-   * Returns whether or not two {@link Mat3}s have exactly the same elements in the same position (when compared with ===)
+   * Returns whether two {@link Mat3}s have exactly the same elements in the same position (when compared with ===).
    * @category Static
    *
    * @param a - The first matrix.
@@ -973,7 +989,7 @@ export class Mat3 extends Float64Array {
   }
 
   /**
-   * Returns whether or not two {@link Mat3}s have approximately the same elements in the same position.
+   * Returns whether two {@link Mat3}s have approximately the same elements in the same position.
    * @category Static
    *
    * @param a - The first matrix.
@@ -1027,7 +1043,7 @@ export class Mat3 extends Float64Array {
 }
 
 // Instance method alias assignments
-Mat3.prototype.mul = Mat3.prototype.multiply;
+Mat3.prototype.mul = Mat3.prototype.multiply; // eslint-disable-line @typescript-eslint/unbound-method
 
 // Static method alias assignments
 Mat3.mul = Mat3.multiply;

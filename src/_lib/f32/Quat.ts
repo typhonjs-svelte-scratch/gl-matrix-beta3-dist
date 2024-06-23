@@ -26,8 +26,8 @@ export class Quat extends Float32Array {
    *
    * @category Constructor
    */
-   constructor(...values: [Readonly<QuatLike> | ArrayBufferLike, number?] | number[]) {
-    switch(values.length) {
+  constructor(...values: [Readonly<QuatLike> | ArrayBufferLike, number?] | number[]) {
+    switch (values.length) {
       case 4:
         super(values); break;
       case 2:
@@ -48,37 +48,37 @@ export class Quat extends Float32Array {
     }
   }
 
-  //============
-  // Attributes
-  //============
+  // ============
+  // Accessors
+  // ============
 
   // Getters and setters to make component access read better.
   // These are likely to be a little bit slower than direct array access.
 
   /**
    * The x component of the quaternion. Equivalent to `this[0];`
-   * @category Quaternion components
+   * @category Quaternion Components
    */
   get x(): number { return this[0]; }
   set x(value: number) { this[0] = value; }
 
   /**
    * The y component of the quaternion. Equivalent to `this[1];`
-   * @category Quaternion components
+   * @category Quaternion Components
    */
   get y(): number { return this[1]; }
   set y(value: number) { this[1] = value; }
 
   /**
    * The z component of the quaternion. Equivalent to `this[2];`
-   * @category Quaternion components
+   * @category Quaternion Components
    */
   get z(): number { return this[2]; }
   set z(value: number) { this[2] = value; }
 
   /**
    * The w component of the quaternion. Equivalent to `this[3];`
-   * @category Quaternion components
+   * @category Quaternion Components
    */
   get w(): number { return this[3]; }
   set w(value: number) { this[3] = value; }
@@ -89,6 +89,8 @@ export class Quat extends Float32Array {
    *
    * Magnitude is used because the `length` attribute is already defined by
    * TypedArrays to mean the number of elements in the array.
+   *
+   * @category Accessors
    */
   get magnitude(): number {
     const x = this[0];
@@ -100,28 +102,33 @@ export class Quat extends Float32Array {
 
   /**
    * Alias for {@link Quat.magnitude}
+   *
+   * @category Accessors
    */
   get mag(): number { return this.magnitude; }
 
   /**
    * A string representation of `this`
    * Equivalent to `Quat.str(this);`
+   *
+   * @category Accessors
    */
   get str(): string {
     return Quat.str(this);
   }
 
-  //===================
+  // ===================
   // Instances methods
-  //===================
+  // ===================
 
   /**
    * Copy the values from another {@link Quat} into `this`.
+   * @category Methods
    *
    * @param a the source quaternion
    * @returns `this`
    */
-  copy(a: Readonly<QuatLike>): Quat {
+  copy(a: Readonly<QuatLike>): this {
     super.set(a);
     return this;
   }
@@ -129,10 +136,11 @@ export class Quat extends Float32Array {
   /**
    * Set `this` to the identity quaternion
    * Equivalent to Quat.identity(this)
+   * @category Methods
    *
    * @returns `this`
    */
-  identity(): Quat {
+  identity(): this {
     this[0] = 0;
     this[1] = 0;
     this[2] = 0;
@@ -143,68 +151,73 @@ export class Quat extends Float32Array {
   /**
    * Multiplies `this` by a {@link Quat}.
    * Equivalent to `Quat.multiply(this, this, b);`
+   * @category Methods
    *
    * @param b - The vector to multiply `this` by
    * @returns `this`
    */
-  multiply(b: Readonly<QuatLike>): Quat {
-    return Quat.multiply(this, this, b) as Quat;
+  multiply(b: Readonly<QuatLike>): this {
+    return Quat.multiply(this, this, b) as this;
   }
 
   /**
    * Alias for {@link Quat.multiply}
+   * @category Methods
    */
-  mul(b: Readonly<QuatLike>): Quat { return this; }
+  mul(b: Readonly<QuatLike>): this { return this; } // eslint-disable-line @typescript-eslint/no-unused-vars
 
   /**
    * Rotates `this` by the given angle about the X axis
    * Equivalent to `Quat.rotateX(this, this, rad);`
+   * @category Methods
    *
    * @param rad - angle (in radians) to rotate
    * @returns `this`
    */
-  rotateX(rad: number): Quat {
-    return Quat.rotateX(this, this, rad) as Quat;
+  rotateX(rad: number): this {
+    return Quat.rotateX(this, this, rad) as this;
   }
 
   /**
    * Rotates `this` by the given angle about the Y axis
    * Equivalent to `Quat.rotateY(this, this, rad);`
+   * @category Methods
    *
    * @param rad - angle (in radians) to rotate
    * @returns `this`
    */
-  rotateY(rad: number): Quat {
-    return Quat.rotateY(this, this, rad) as Quat;
+  rotateY(rad: number): this {
+    return Quat.rotateY(this, this, rad) as this;
   }
 
   /**
    * Rotates `this` by the given angle about the Z axis
    * Equivalent to `Quat.rotateZ(this, this, rad);`
+   * @category Methods
    *
    * @param rad - angle (in radians) to rotate
    * @returns `this`
    */
-  rotateZ(rad: number): Quat {
-    return Quat.rotateZ(this, this, rad) as Quat;
+  rotateZ(rad: number): this {
+    return Quat.rotateZ(this, this, rad) as this;
   }
 
   /**
    * Inverts `this`
    * Equivalent to `Quat.invert(this, this);`
+   * @category Methods
    *
    * @returns `this`
    */
-  invert(): Quat {
-    return Quat.invert(this, this) as Quat;
+  invert(): this {
+    return Quat.invert(this, this) as this;
   }
 
   /**
    * Scales `this` by a scalar number
    * Equivalent to `Quat.scale(this, this, scale);`
+   * @category Methods
    *
-   * @param out - the receiving vector
-   * @param a - the vector to scale
    * @param scale - amount to scale the vector by
    * @returns `this`
    */
@@ -219,6 +232,7 @@ export class Quat extends Float32Array {
   /**
    * Calculates the dot product of `this` and another {@link Quat}
    * Equivalent to `Quat.dot(this, b);`
+   * @category Methods
    *
    * @param b - the second operand
    * @returns dot product of `this` and b
@@ -227,9 +241,9 @@ export class Quat extends Float32Array {
     return Quat.dot(this, b);
   }
 
-  //===================
+  // ===================
   // Static accessors
-  //===================
+  // ===================
 
   /**
    * @category Static
@@ -240,9 +254,9 @@ export class Quat extends Float32Array {
     return 4 * Float32Array.BYTES_PER_ELEMENT;
   }
 
-  //===================
+  // ===================
   // Static methods
-  //===================
+  // ===================
 
   /**
    * Creates a new identity quat
@@ -280,7 +294,7 @@ export class Quat extends Float32Array {
    * @returns `out`
    **/
   static setAxisAngle(out: QuatLike, axis: Readonly<Vec3Like>, rad: number): QuatLike {
-    rad = rad * 0.5;
+    rad *= 0.5;
     const s = Math.sin(rad);
     out[0] = s * axis[0];
     out[1] = s * axis[1];
@@ -293,7 +307,7 @@ export class Quat extends Float32Array {
    * Gets the rotation axis and angle for a given
    *  quaternion. If a quaternion is created with
    *  setAxisAngle, this method will return the same
-   *  values as providied in the original parameter list
+   *  values as provided in the original parameter list
    *  OR functionally equivalent values.
    * Example: The quaternion formed by axis [0, 0, 1] and
    *  angle -90 is the same as the quaternion formed by
@@ -335,7 +349,7 @@ export class Quat extends Float32Array {
   }
 
   /**
-   * Multiplies two quat's
+   * Multiplies two quaternions.
    * @category Static
    *
    * @param out - the receiving quaternion
@@ -591,7 +605,7 @@ export class Quat extends Float32Array {
    * @param out - the receiving quaternion
    * @returns `out`
    */
-  /*static random(out: QuatLike): QuatLike {
+  /* static random(out: QuatLike): QuatLike {
     // Implementation of http://planning.cs.uiuc.edu/node198.html
     // TODO: Calling random 3 times is probably not the fastest solution
     let u1 = glMatrix.RANDOM();
@@ -635,7 +649,7 @@ export class Quat extends Float32Array {
 
   /**
    * Calculates the conjugate of a quat
-   * If the quaternion is normalized, this function is faster than quat.inverse and produces the same result.
+   * If the quaternion is normalized, this function is faster than `quat.inverse` and produces the same result.
    * @category Static
    *
    * @param out - the receiving quaternion
@@ -654,7 +668,7 @@ export class Quat extends Float32Array {
    * Creates a quaternion from the given 3x3 rotation matrix.
    *
    * NOTE: The resultant quaternion is not normalized, so you should be sure
-   * to renormalize the quaternion yourself where necessary.
+   * to re-normalize the quaternion yourself where necessary.
    * @category Static
    *
    * @param out - the receiving quaternion
@@ -678,10 +692,10 @@ export class Quat extends Float32Array {
     } else {
       // |w| <= 1/2
       let i = 0;
-      if (m[4] > m[0]) i = 1;
-      if (m[8] > m[i * 3 + i]) i = 2;
-      let j = (i + 1) % 3;
-      let k = (i + 2) % 3;
+      if (m[4] > m[0]) { i = 1; }
+      if (m[8] > m[i * 3 + i]) { i = 2; }
+      const j = (i + 1) % 3;
+      const k = (i + 2) % 3;
 
       fRoot = Math.sqrt(m[i * 3 + i] - m[j * 3 + j] - m[k * 3 + k] + 1.0);
       out[i] = 0.5 * fRoot;
@@ -706,17 +720,17 @@ export class Quat extends Float32Array {
    * @returns `out`
    */
   static fromEuler(out: QuatLike, x: number, y: number, z: number, order = Quat.#DEFAULT_ANGLE_ORDER): QuatLike {
-    let halfToRad = (0.5 * Math.PI) / 180.0;
+    const halfToRad = (0.5 * Math.PI) / 180.0;
     x *= halfToRad;
     y *= halfToRad;
     z *= halfToRad;
 
-    let sx = Math.sin(x);
-    let cx = Math.cos(x);
-    let sy = Math.sin(y);
-    let cy = Math.cos(y);
-    let sz = Math.sin(z);
-    let cz = Math.cos(z);
+    const sx = Math.sin(x);
+    const cx = Math.cos(x);
+    const sy = Math.sin(y);
+    const cy = Math.cos(y);
+    const sz = Math.sin(z);
+    const cz = Math.cos(z);
 
     switch (order) {
       case 'xyz':
@@ -762,7 +776,7 @@ export class Quat extends Float32Array {
         break;
 
       default:
-        throw new Error('Unknown angle order ' + order);
+        throw new Error(`Unknown angle order ${order}`);
     }
 
     return out;
@@ -831,6 +845,7 @@ export class Quat extends Float32Array {
    * @param w - W component
    * @returns `out`
    */
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   static set(out: QuatLike, x: number, y: number, z: number, w: number): QuatLike { return out; }
 
   /**
@@ -842,12 +857,14 @@ export class Quat extends Float32Array {
    * @param b - the second operand
    * @returns `out`
    */
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   static add(out: QuatLike, a: Readonly<QuatLike>, b: Readonly<QuatLike>): QuatLike { return out; }
 
   /**
    * Alias for {@link Quat.multiply}
    * @category Static
    */
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   static mul(out: QuatLike, a: Readonly<QuatLike>, b: Readonly<QuatLike>): QuatLike { return out; }
 
   /**
@@ -889,7 +906,8 @@ export class Quat extends Float32Array {
    * @param t - interpolation amount, in the range [0-1], between the two inputs
    * @returns `out`
    */
-   static lerp(out: QuatLike, a: Readonly<QuatLike>, b: Readonly<QuatLike>, t: number): QuatLike { return out }
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  static lerp(out: QuatLike, a: Readonly<QuatLike>, b: Readonly<QuatLike>, t: number): QuatLike { return out; }
 
   /**
    * Calculates the magnitude (length) of a {@link Quat}
@@ -898,12 +916,14 @@ export class Quat extends Float32Array {
    * @param a - quaternion to calculate length of
    * @returns length of `a`
    */
-   static magnitude(a: Readonly<QuatLike>): number { return 0; }
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  static magnitude(a: Readonly<QuatLike>): number { return 0; }
 
   /**
    * Alias for {@link Quat.magnitude}
    * @category Static
    */
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   static mag(a: Readonly<QuatLike>): number { return 0; }
 
   /**
@@ -911,15 +931,15 @@ export class Quat extends Float32Array {
    * @category Static
    * @deprecated Use {@link Quat.magnitude} to avoid conflicts with builtin `length` methods/attribs
    */
-  // @ts-ignore: Length conflicts with Function.length
-  static length(a: Readonly<QuatLike>): number { return 0; }
+  // Length conflicts with Function.length
+  static length(a: Readonly<QuatLike>): number { return 0; }  // eslint-disable-line @typescript-eslint/no-unused-vars
 
   /**
    * Alias for {@link Quat.magnitude}
    * @category Static
    * @deprecated Use {@link Quat.mag}
    */
-  static len(a: Readonly<QuatLike>): number { return 0; }
+  static len(a: Readonly<QuatLike>): number { return 0; } // eslint-disable-line @typescript-eslint/no-unused-vars
 
   /**
    * Calculates the squared length of a {@link Quat}
@@ -928,13 +948,14 @@ export class Quat extends Float32Array {
    * @param a - quaternion to calculate squared length of
    * @returns squared length of a
    */
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   static squaredLength(a: Readonly<QuatLike>): number { return 0; }
 
   /**
    * Alias for {@link Quat.squaredLength}
    * @category Static
    */
-  static sqrLen(a: Readonly<QuatLike>): number { return 0; }
+  static sqrLen(a: Readonly<QuatLike>): number { return 0; }  // eslint-disable-line @typescript-eslint/no-unused-vars
 
   /**
    * Normalize a {@link Quat}
@@ -944,26 +965,29 @@ export class Quat extends Float32Array {
    * @param a - quaternion to normalize
    * @returns `out`
    */
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   static normalize(out: QuatLike, a: Readonly<QuatLike>): QuatLike { return out; }
 
   /**
-   * Returns whether or not the quaternions have exactly the same elements in the same position (when compared with ===)
+   * Returns whether the quaternions have exactly the same elements in the same position (when compared with ===)
    * @category Static
    *
    * @param a - The first quaternion.
    * @param b - The second quaternion.
    * @returns True if the vectors are equal, false otherwise.
    */
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   static exactEquals(a: Readonly<QuatLike>, b: Readonly<QuatLike>): boolean { return false; }
 
   /**
-   * Returns whether or not the quaternions have approximately the same elements in the same position.
+   * Returns whether the quaternions have approximately the same elements in the same position.
    * @category Static
    *
    * @param a - The first vector.
    * @param b - The second vector.
    * @returns True if the vectors are equal, false otherwise.
    */
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   static equals(a: Readonly<QuatLike>, b: Readonly<QuatLike>): boolean { return false; }
 
   /**
@@ -979,10 +1003,11 @@ export class Quat extends Float32Array {
    * @returns `out`
    */
   static rotationTo(out: QuatLike, a: Readonly<Vec3Like>, b: Readonly<Vec3Like>): QuatLike {
-    let dot = Vec3.dot(a, b);
+    const dot = Vec3.dot(a, b);
+
     if (dot < -0.999999) {
       Vec3.cross(Quat.#TMP_VEC3, Quat.#X_UNIT_VEC3, a);
-      if (Vec3.mag(Quat.#TMP_VEC3) < 0.000001) Vec3.cross(Quat.#TMP_VEC3, Quat.#Y_UNIT_VEC3, a);
+      if (Vec3.mag(Quat.#TMP_VEC3) < 0.000001) { Vec3.cross(Quat.#TMP_VEC3, Quat.#Y_UNIT_VEC3, a); }
       Vec3.normalize(Quat.#TMP_VEC3, Quat.#TMP_VEC3);
       Quat.setAxisAngle(out, Quat.#TMP_VEC3, Math.PI);
       return out;
@@ -1014,7 +1039,8 @@ export class Quat extends Float32Array {
    * @param t - interpolation amount, in the range [0-1], between the two inputs
    * @returns `out`
    */
-  static sqlerp(out: QuatLike, a: Readonly<QuatLike>, b: Readonly<QuatLike>, c: Readonly<QuatLike>, d: Readonly<QuatLike>, t: number): QuatLike {
+  static sqlerp(out: QuatLike, a: Readonly<QuatLike>, b: Readonly<QuatLike>, c: Readonly<QuatLike>,
+    d: Readonly<QuatLike>, t: number): QuatLike {
     Quat.slerp(Quat.#TMP_QUAT1, a, d, t);
     Quat.slerp(Quat.#TMP_QUAT2, b, c, t);
     Quat.slerp(out, Quat.#TMP_QUAT1, Quat.#TMP_QUAT2, 2 * t * (1 - t));
@@ -1063,7 +1089,7 @@ Quat.equals = Vec4.equals;
 Quat.magnitude = Vec4.magnitude;
 
 // Instance method alias assignments
-Quat.prototype.mul = Quat.prototype.multiply;
+Quat.prototype.mul = Quat.prototype.multiply; // eslint-disable-line @typescript-eslint/unbound-method
 
 // Static method alias assignments
 Quat.mul = Quat.multiply;

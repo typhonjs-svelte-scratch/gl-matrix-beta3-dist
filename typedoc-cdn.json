@@ -1,0 +1,33 @@
+{
+  "name": "gl-matrix (CDN Distribution)",
+  "basePath": ".",
+  "exclude": ["./dist/**/*"],
+  "out": "docs/cdn",
+  "readme": "./README-CDN.md",
+  "categoryOrder": [
+    "Constructor",
+    "Static",
+    "Accessors",
+    "Methods",
+    "Color Components",
+    "Vector Components",
+    "Quaternion Components",
+    "Swizzle Accessors (Optional)",
+    "*"
+  ],
+  "defaultCategory": "Inherited",
+  "dmtLinksIcon": [
+    {
+      "icon": "./assets/icon/gl-matrix-icon-mono-64.webp",
+      "title": "Homepage",
+      "url": "https://glmatrix.net/"
+    }
+  ],
+  "dmtLinksService": {
+    "GitHub": "https://github.com/toji/gl-matrix",
+    "NPM": "https://www.npmjs.com/package/gl-matrix"
+  },
+  "sidebarLinks": {
+    "Go to: Node / NPM Distribution": "https://typhonjs-svelte-scratch.github.io/gl-matrix-beta3-dist/"
+  }
+}
