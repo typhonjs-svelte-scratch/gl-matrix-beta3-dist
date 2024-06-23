@@ -1,11 +1,11 @@
-// glMatrix - v4.0.0-beta.3
-/**
- * Provides common resources and constants shared across `gl-matrix`.
- *
- * @packageDocumentation
- */
-/**
- * A small constant used to determine the acceptable error margin in floating-point calculations.
- */
-export const GLM_EPSILON = 0.000001;
+// gl-matrix - v4.0.0-beta.3 - A high performance matrix and vector library.
+// @author Brandon Jones
+// @author Colin MacKenzie IV
+// @license MIT (https://github.com/toji/gl-matrix/blob/master/LICENSE.md)
+
+// src/common/index.ts
+var GLM_EPSILON = 1e-6;
+export {
+  GLM_EPSILON
+};
 //# sourceMappingURL=index.js.map

@@ -1,1 +1,7 @@
-{"version":3,"file":"index.js","sourceRoot":"","sources":["../../src/common/index.ts"],"names":[],"mappings":"AAAA;;;;GAIG;AAEH;;GAEG;AACH,MAAM,CAAC,MAAM,WAAW,GAAW,QAAQ,CAAC"}
+{
+  "version": 3,
+  "sources": ["../../src/common/index.ts"],
+  "sourcesContent": ["/**\n * Provides common resources and constants shared across `gl-matrix`.\n *\n * @packageDocumentation\n */\n\n/**\n * A small constant used to determine the acceptable error margin in floating-point calculations.\n */\nexport const GLM_EPSILON = 0.000001;\n"],
+  "mappings": ";;;;;;AASO,IAAM,cAAc;",
+  "names": []
+}

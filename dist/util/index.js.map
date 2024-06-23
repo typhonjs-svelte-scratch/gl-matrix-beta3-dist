@@ -1,1 +1,7 @@
-{"version":3,"file":"index.js","sourceRoot":"","sources":["../../src/util/index.ts"],"names":[],"mappings":"AAAA;;;;;;;;;;GAUG;AAEH,cAAc,sBAAsB,CAAC"}
+{
+  "version": 3,
+  "sources": ["../../src/util/angleConversion.ts"],
+  "sourcesContent": ["/**\r\n * Constant used in `gl-matrix` angle conversions.\r\n */\r\nconst GLM_DEG_TO_RAD: number = Math.PI / 180;\r\n\r\n/**\r\n * Constant used in `gl-matrix` angle conversions.\r\n */\r\nconst GLM_RAD_TO_DEG: number = 180 / Math.PI;\r\n\r\n/**\r\n * Convert `radians` to `degrees`.\r\n *\r\n * @param value - Angle in `radians`.\r\n * @returns Angle in `degrees`.\r\n */\r\nexport function toDegree(value: number): number {\r\n  return value * GLM_RAD_TO_DEG;\r\n}\r\n\r\n/**\r\n * Convert `degrees` to `radians`.\r\n *\r\n * @param value - Angle in `degrees`.\r\n * @returns Angle in `radians`.\r\n */\r\nexport function toRadian(value: number): number {\r\n  return value * GLM_DEG_TO_RAD;\r\n}\r\n"],
+  "mappings": ";;;;;;AAGA,IAAM,iBAAyB,KAAK,KAAK;AAKzC,IAAM,iBAAyB,MAAM,KAAK;AAQnC,SAAS,SAAS,OAAuB;AAC9C,SAAO,QAAQ;AACjB;AAQO,SAAS,SAAS,OAAuB;AAC9C,SAAO,QAAQ;AACjB;",
+  "names": []
+}

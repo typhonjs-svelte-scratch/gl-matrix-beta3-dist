@@ -1,4 +1,7 @@
-// glMatrix - v4.0.0-beta.3
+// gl-matrix - v4.0.0-beta.3 - A high performance matrix and vector library.
+// @author Brandon Jones
+// @author Colin MacKenzie IV
+// @license MIT (https://github.com/toji/gl-matrix/blob/master/LICENSE.md)
 var __defProp = Object.defineProperty;
 var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
 var __getOwnPropNames = Object.getOwnPropertyNames;
@@ -17,7 +20,7 @@ var __copyProps = (to, from, except, desc) => {
 };
 var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
 
-// dist/util/index.js
+// src/util/index.ts
 var util_exports = {};
 __export(util_exports, {
   toDegree: () => toDegree,
@@ -25,7 +28,7 @@ __export(util_exports, {
 });
 module.exports = __toCommonJS(util_exports);
 
-// dist/util/angleConversion.js
+// src/util/angleConversion.ts
 var GLM_DEG_TO_RAD = Math.PI / 180;
 var GLM_RAD_TO_DEG = 180 / Math.PI;
 function toDegree(value) {

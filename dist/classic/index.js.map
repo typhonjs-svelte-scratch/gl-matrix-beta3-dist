@@ -1,1 +1,7 @@
-{"version":3,"file":"index.js","sourceRoot":"","sources":["../../src/classic/index.ts"],"names":[],"mappings":"AAAA;;;;;;;;;;;;;;GAcG;AAEH,OAAO,EACL,IAAI,IAAI,IAAI,EACZ,KAAK,IAAI,KAAK,EACd,IAAI,IAAI,IAAI,EACZ,IAAI,IAAI,IAAI,EACZ,IAAI,IAAI,IAAI,EACZ,KAAK,IAAI,KAAK,EACd,IAAI,IAAI,IAAI,EACZ,IAAI,IAAI,IAAI,EACZ,IAAI,IAAI,IAAI,GACb,MAAM,YAAY,CAAC"}
+{
+  "version": 3,
+  "sources": ["../../src/classic/index.ts"],
+  "sourcesContent": ["/**\r\n * Provides aliases for backwards compatibility with the `3.x` API (32-bit).\r\n *\r\n * To facilitate easier adoption of version 4 of `gl-matrix` and maintain compatability with existing codebases the\r\n * modern API can be accessed via remapped exports matching the version 3 API from the `gl-matrix/classic` sub-path\r\n * export. The only change required is altering imports from `gl-matrix` to `gl-matrix/classic`.\r\n *\r\n * ```js\r\n * import { vec3 } from 'gl-matrix/classic';\r\n *\r\n * const vec = vec3.create();\r\n * ```\r\n *\r\n * @packageDocumentation\r\n */\r\n\r\nexport {\r\n  Mat2 as mat2,\r\n  Mat2d as mat2d,\r\n  Mat3 as mat3,\r\n  Mat4 as mat4,\r\n  Quat as quat,\r\n  Quat2 as quat2,\r\n  Vec2 as vec2,\r\n  Vec3 as vec3,\r\n  Vec4 as vec4,\r\n} from '#gl-matrix';\r\n\r\n"],
+  "mappings": ";;;;;;AAgBA;AAAA,EACU;AAAA,EACC;AAAA,EACD;AAAA,EACA;AAAA,EACA;AAAA,EACC;AAAA,EACD;AAAA,EACA;AAAA,EACA;AAAA,OACH;",
+  "names": []
+}

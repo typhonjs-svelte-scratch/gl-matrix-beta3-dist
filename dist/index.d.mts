@@ -36,6 +36,8 @@ declare class Mat2 extends Float32Array {
   /**
    * A string representation of `this`
    * Equivalent to `Mat2.str(this);`
+   *
+   * @category Accessors
    */
   get str(): string;
   /**
@@ -43,59 +45,65 @@ declare class Mat2 extends Float32Array {
    *
    * @param a the source vector
    * @returns `this`
+   * @category Methods
    */
-  copy(a: Readonly<Mat2Like>): Mat2;
+  copy(a: Readonly<Mat2Like>): this;
   /**
    * Set `this` to the identity matrix
    * Equivalent to Mat2.identity(this)
    *
    * @returns `this`
+   * @category Methods
    */
-  identity(): Mat2;
+  identity(): this;
   /**
    * Multiplies this {@link Mat2} against another one
    * Equivalent to `Mat2.multiply(this, this, b);`
    *
-   * @param out - The receiving Matrix
-   * @param a - The first operand
    * @param b - The second operand
    * @returns `this`
+   * @category Methods
    */
-  multiply(b: Readonly<Mat2Like>): Mat2;
+  multiply(b: Readonly<Mat2Like>): this;
   /**
    * Alias for {@link Mat2.multiply}
+   * @category Methods
    */
-  mul(b: Readonly<Mat2Like>): Mat2;
+  mul(b: Readonly<Mat2Like>): this;
   /**
    * Transpose this {@link Mat2}
    * Equivalent to `Mat2.transpose(this, this);`
    *
    * @returns `this`
+   * @category Methods
    */
-  transpose(): Mat2;
+  transpose(): this;
   /**
    * Inverts this {@link Mat2}
    * Equivalent to `Mat4.invert(this, this);`
    *
    * @returns `this`
+   * @category Methods
    */
-  invert(): Mat2;
+  invert(): this;
   /**
    * Scales this {@link Mat2} by the dimensions in the given vec3 not using vectorization
    * Equivalent to `Mat2.scale(this, this, v);`
    *
    * @param v - The {@link Vec2} to scale the matrix by
    * @returns `this`
+   * @category Methods
    */
-  scale(v: Readonly<Vec2Like>): Mat2;
+  scale(v: Readonly<Vec2Like>): this;
   /**
    * Rotates this {@link Mat2} by the given angle around the given axis
    * Equivalent to `Mat2.rotate(this, this, rad);`
    *
    * @param rad - the angle to rotate the matrix by
-   * @returns `out`
+   * @returns `this`
+   * @category Methods
    */
-  rotate(rad: number): Mat2;
+  rotate(rad: number): this;
   /**
    * @category Static
    *
@@ -166,7 +174,7 @@ declare class Mat2 extends Float32Array {
    *
    * @param out - the receiving matrix
    * @param a - the source matrix
-   * @returns `out` or `null` if the matrix is not invertable
+   * @returns `out` or `null` if the matrix is not invertible
    */
   static invert(out: Mat2Like, a: Mat2Like): Mat2Like | null;
   /**
@@ -249,9 +257,10 @@ declare class Mat2 extends Float32Array {
   /**
    * Creates a {@link Mat2} from a given angle around a given axis
    * This is equivalent to (but much faster than):
-   *
-   *     mat2.identity(dest);
-   *     mat2.rotate(dest, dest, rad);
+   * ```js
+   *   mat2.identity(dest);
+   *   mat2.rotate(dest, dest, rad);
+   * ```
    * @category Static
    *
    * @param out - {@link Mat2} receiving operation result
@@ -262,9 +271,10 @@ declare class Mat2 extends Float32Array {
   /**
    * Creates a {@link Mat2} from a vector scaling
    * This is equivalent to (but much faster than):
-   *
-   *     mat2.identity(dest);
-   *     mat2.scale(dest, dest, vec);
+   * ```js
+   *   mat2.identity(dest);
+   *   mat2.scale(dest, dest, vec);
+   * ```
    * @category Static
    *
    * @param out - {@link Mat2} receiving operation result
@@ -315,9 +325,9 @@ declare class Mat2 extends Float32Array {
     D: Readonly<Mat2Like>,
     U: Mat2Like,
     a: Readonly<Mat2Like>,
-  ): (Readonly<Float32Array> | Readonly<Float64Array> | readonly [number, number, number, number])[];
+  ): [Mat2Like, Readonly<Mat2Like>, Mat2Like];
   /**
-   * Returns whether or not two {@link Mat2}s have exactly the same elements in the same position (when compared with ===)
+   * Returns whether two {@link Mat2}s have exactly the same elements in the same position (when compared with ===)
    * @category Static
    *
    * @param a - The first matrix.
@@ -326,7 +336,7 @@ declare class Mat2 extends Float32Array {
    */
   static exactEquals(a: Readonly<Mat2Like>, b: Readonly<Mat2Like>): boolean;
   /**
-   * Returns whether or not two {@link Mat2}s have approximately the same elements in the same position.
+   * Returns whether two {@link Mat2}s have approximately the same elements in the same position.
    * @category Static
    *
    * @param a - The first matrix.
@@ -358,60 +368,69 @@ declare class Mat2d extends Float32Array {
   /**
    * A string representation of `this`
    * Equivalent to `Mat2d.str(this);`
+   *
+   * @category Accessors
    */
   get str(): string;
   /**
    * Copy the values from another {@link Mat2d} into `this`.
+   * @category Methods
    *
    * @param a the source vector
    * @returns `this`
    */
-  copy(a: Readonly<Mat2dLike>): Mat2d;
+  copy(a: Readonly<Mat2dLike>): this;
   /**
    * Set `this` to the identity matrix
    * Equivalent to Mat2d.identity(this)
+   * @category Methods
    *
    * @returns `this`
    */
-  identity(): Mat2d;
+  identity(): this;
   /**
    * Multiplies this {@link Mat2d} against another one
    * Equivalent to `Mat2d.multiply(this, this, b);`
+   * @category Methods
    *
    * @param out - The receiving Matrix
    * @param a - The first operand
    * @param b - The second operand
    * @returns `this`
    */
-  multiply(b: Readonly<Mat2dLike>): Mat2d;
+  multiply(b: Readonly<Mat2dLike>): this;
   /**
    * Alias for {@link Mat2d.multiply}
+   * @category Methods
    */
-  mul(b: Readonly<Mat2dLike>): Mat2d;
+  mul(b: Readonly<Mat2dLike>): this;
   /**
    * Translate this {@link Mat2d} by the given vector
    * Equivalent to `Mat2d.translate(this, this, v);`
+   * @category Methods
    *
    * @param v - The {@link Vec2} to translate by
    * @returns `this`
    */
-  translate(v: Readonly<Vec2Like>): Mat2d;
+  translate(v: Readonly<Vec2Like>): this;
   /**
    * Rotates this {@link Mat2d} by the given angle around the given axis
    * Equivalent to `Mat2d.rotate(this, this, rad);`
+   * @category Methods
    *
    * @param rad - the angle to rotate the matrix by
-   * @returns `out`
+   * @returns `this`
    */
-  rotate(rad: number): Mat2d;
+  rotate(rad: number): this;
   /**
    * Scales this {@link Mat2d} by the dimensions in the given vec3 not using vectorization
    * Equivalent to `Mat2d.scale(this, this, v);`
+   * @category Methods
    *
    * @param v - The {@link Vec2} to scale the matrix by
    * @returns `this`
    */
-  scale(v: Readonly<Vec2Like>): Mat2d;
+  scale(v: Readonly<Vec2Like>): this;
   /**
    * @category Static
    *
@@ -473,7 +492,7 @@ declare class Mat2d extends Float32Array {
    *
    * @param out - the receiving matrix
    * @param a - the source matrix
-   * @returns `out` or `null` if the matrix is not invertable
+   * @returns `out` or `null` if the matrix is not invertible
    */
   static invert(out: Mat2dLike, a: Mat2dLike): Mat2dLike | null;
   /**
@@ -557,9 +576,10 @@ declare class Mat2d extends Float32Array {
   /**
    * Creates a {@link Mat2d} from a vector translation
    * This is equivalent to (but much faster than):
-   *
-   *     Mat2d.identity(dest);
-   *     Mat2d.translate(dest, dest, vec);
+   * ```js
+   *   Mat2d.identity(dest);
+   *   Mat2d.translate(dest, dest, vec);
+   * ```
    * @category Static
    *
    * @param out - {@link Mat2d} receiving operation result
@@ -570,9 +590,10 @@ declare class Mat2d extends Float32Array {
   /**
    * Creates a {@link Mat2d} from a given angle around a given axis
    * This is equivalent to (but much faster than):
-   *
-   *     Mat2d.identity(dest);
-   *     Mat2d.rotate(dest, dest, rad);
+   * ```js
+   *   Mat2d.identity(dest);
+   *   Mat2d.rotate(dest, dest, rad);
+   * ```
    * @category Static
    *
    * @param out - {@link Mat2d} receiving operation result
@@ -583,9 +604,10 @@ declare class Mat2d extends Float32Array {
   /**
    * Creates a {@link Mat2d} from a vector scaling
    * This is equivalent to (but much faster than):
-   *
-   *     Mat2d.identity(dest);
-   *     Mat2d.scale(dest, dest, vec);
+   * ```js
+   *   Mat2d.identity(dest);
+   *   Mat2d.scale(dest, dest, vec);
+   * ```
    * @category Static
    *
    * @param out - {@link Mat2d} receiving operation result
@@ -623,7 +645,7 @@ declare class Mat2d extends Float32Array {
    */
   static multiplyScalarAndAdd(out: Mat2dLike, a: Readonly<Mat2dLike>, b: Readonly<Mat2dLike>, scale: number): Mat2dLike;
   /**
-   * Returns whether or not two {@link Mat2d}s have exactly the same elements in the same position (when compared with ===)
+   * Returns whether two {@link Mat2d}s have exactly the same elements in the same position (when compared with ===).
    * @category Static
    *
    * @param a - The first matrix.
@@ -632,7 +654,7 @@ declare class Mat2d extends Float32Array {
    */
   static exactEquals(a: Readonly<Mat2dLike>, b: Readonly<Mat2dLike>): boolean;
   /**
-   * Returns whether or not two {@link Mat2d}s have approximately the same elements in the same position.
+   * Returns whether two {@link Mat2d}s have approximately the same elements in the same position.
    * @category Static
    *
    * @param a - The first matrix.
@@ -664,74 +686,85 @@ declare class Mat3 extends Float32Array {
   /**
    * A string representation of `this`
    * Equivalent to `Mat3.str(this);`
+   *
+   * @category Accessors
    */
   get str(): string;
   /**
    * Copy the values from another {@link Mat3} into `this`.
+   * @category Methods
    *
    * @param a the source vector
    * @returns `this`
    */
-  copy(a: Readonly<Mat3Like>): Mat3;
+  copy(a: Readonly<Mat3Like>): this;
   /**
    * Set `this` to the identity matrix
    * Equivalent to Mat3.identity(this)
+   * @category Methods
    *
    * @returns `this`
    */
-  identity(): Mat3;
+  identity(): this;
   /**
    * Multiplies this {@link Mat3} against another one
    * Equivalent to `Mat3.multiply(this, this, b);`
+   * @category Methods
    *
    * @param out - The receiving Matrix
    * @param a - The first operand
    * @param b - The second operand
    * @returns `this`
    */
-  multiply(b: Readonly<Mat3Like>): Mat3;
+  multiply(b: Readonly<Mat3Like>): this;
   /**
    * Alias for {@link Mat3.multiply}
+   * @category Methods
    */
-  mul(b: Readonly<Mat3Like>): Mat3;
+  mul(b: Readonly<Mat3Like>): this;
   /**
    * Transpose this {@link Mat3}
    * Equivalent to `Mat3.transpose(this, this);`
+   * @category Methods
    *
    * @returns `this`
    */
-  transpose(): Mat3;
+  transpose(): this;
   /**
    * Inverts this {@link Mat3}
    * Equivalent to `Mat4.invert(this, this);`
+   * @category Methods
    *
    * @returns `this`
    */
-  invert(): Mat3;
+  invert(): this;
   /**
    * Translate this {@link Mat3} by the given vector
    * Equivalent to `Mat3.translate(this, this, v);`
+   * @category Methods
    *
    * @param v - The {@link Vec2} to translate by
    * @returns `this`
    */
-  translate(v: Readonly<Vec2Like>): Mat3;
+  translate(v: Readonly<Vec2Like>): this;
   /**
    * Rotates this {@link Mat3} by the given angle around the given axis
    * Equivalent to `Mat3.rotate(this, this, rad);`
+   * @category Methods
    *
    * @param rad - the angle to rotate the matrix by
-   * @returns `out`
+   * @returns `this`
    */
-  rotate(rad: number): Mat3;
+  rotate(rad: number): this;
   /**
    * Scales this {@link Mat3} by the dimensions in the given vec3 not using vectorization
    * Equivalent to `Mat3.scale(this, this, v);`
+   * @category Methods
    *
    * @param v - The {@link Vec2} to scale the matrix by
    * @returns `this`
    */
-  scale(v: Readonly<Vec2Like>): Mat3;
+  scale(v: Readonly<Vec2Like>): this;
   /**
    * @category Static
    *
@@ -802,7 +835,7 @@ declare class Mat3 extends Float32Array {
    *
    * @param out - the receiving matrix
    * @param a - the source matrix
-   * @returns `out` or `null` if the matrix is not invertable
+   * @returns `out` or `null` if the matrix is not invertible
    */
   static invert(out: Mat3Like, a: Mat3Like): Mat3Like | null;
   /**
@@ -895,9 +928,10 @@ declare class Mat3 extends Float32Array {
   /**
    * Creates a {@link Mat3} from a vector translation
    * This is equivalent to (but much faster than):
-   *
-   *     mat3.identity(dest);
-   *     mat3.translate(dest, dest, vec);
+   * ```js
+   *   mat3.identity(dest);
+   *   mat3.translate(dest, dest, vec);
+   * ```
    * @category Static
    *
    * @param out - {@link Mat3} receiving operation result
@@ -921,9 +955,10 @@ declare class Mat3 extends Float32Array {
   /**
    * Creates a {@link Mat3} from a vector scaling
    * This is equivalent to (but much faster than):
-   *
-   *     mat3.identity(dest);
-   *     mat3.scale(dest, dest, vec);
+   * ```js
+   *   mat3.identity(dest);
+   *   mat3.scale(dest, dest, vec);
+   * ```
    * @category Static
    *
    * @param out - {@link Mat3} receiving operation result
@@ -943,6 +978,7 @@ declare class Mat3 extends Float32Array {
   static fromMat2d(out: Mat3Like, a: Readonly<Mat2dLike>): Mat3Like;
   /**
    * Calculates a {@link Mat3} from the given quaternion
+   * @category Static
    *
    * @param out - {@link Mat3} receiving operation result
    * @param q - {@link Quat} to create matrix from
@@ -965,7 +1001,7 @@ declare class Mat3 extends Float32Array {
    *
    * @param {mat3} out mat3 receiving operation result
    * @param {ReadonlyMat4} a Mat4 to derive the normal matrix from
-   * @returns `out` or `null` if the matrix is not invertable
+   * @returns `out` or `null` if the matrix is not invertible
    */
   static normalFromMat4(out: Mat3Like, a: Readonly<Mat4Like>): Mat3Like | null;
   /**
@@ -1020,7 +1056,7 @@ declare class Mat3 extends Float32Array {
    */
   static multiplyScalarAndAdd(out: Mat3Like, a: Readonly<Mat3Like>, b: Readonly<Mat3Like>, scale: number): Mat3Like;
   /**
-   * Returns whether or not two {@link Mat3}s have exactly the same elements in the same position (when compared with ===)
+   * Returns whether two {@link Mat3}s have exactly the same elements in the same position (when compared with ===).
    * @category Static
    *
    * @param a - The first matrix.
@@ -1029,7 +1065,7 @@ declare class Mat3 extends Float32Array {
    */
   static exactEquals(a: Readonly<Mat3Like>, b: Readonly<Mat3Like>): boolean;
   /**
-   * Returns whether or not two {@link Mat3}s have approximately the same elements in the same position.
+   * Returns whether two {@link Mat3}s have approximately the same elements in the same position.
    * @category Static
    *
    * @param a - The first matrix.
@@ -1061,105 +1097,118 @@ declare class Mat4 extends Float32Array {
   /**
    * A string representation of `this`
    * Equivalent to `Mat4.str(this);`
+   *
+   * @category Accessors
    */
   get str(): string;
   /**
    * Copy the values from another {@link Mat4} into `this`.
+   * @category Methods
    *
    * @param a the source vector
    * @returns `this`
    */
-  copy(a: Readonly<Mat4Like>): Mat4;
+  copy(a: Readonly<Mat4Like>): this;
   /**
    * Set `this` to the identity matrix
    * Equivalent to Mat4.identity(this)
+   * @category Methods
    *
    * @returns `this`
    */
-  identity(): Mat4;
+  identity(): this;
   /**
    * Multiplies this {@link Mat4} against another one
    * Equivalent to `Mat4.multiply(this, this, b);`
+   * @category Methods
    *
-   * @param out - The receiving Matrix
-   * @param a - The first operand
    * @param b - The second operand
    * @returns `this`
    */
-  multiply(b: Readonly<Mat4Like>): Mat4;
+  multiply(b: Readonly<Mat4Like>): this;
   /**
    * Alias for {@link Mat4.multiply}
+   * @category Methods
    */
-  mul(b: Readonly<Mat4Like>): Mat4;
+  mul(b: Readonly<Mat4Like>): this;
   /**
    * Transpose this {@link Mat4}
    * Equivalent to `Mat4.transpose(this, this);`
+   * @category Methods
    *
    * @returns `this`
    */
-  transpose(): Mat4;
+  transpose(): this;
   /**
    * Inverts this {@link Mat4}
    * Equivalent to `Mat4.invert(this, this);`
+   * @category Methods
    *
    * @returns `this`
    */
-  invert(): Mat4;
+  invert(): this;
   /**
    * Translate this {@link Mat4} by the given vector
    * Equivalent to `Mat4.translate(this, this, v);`
+   * @category Methods
    *
    * @param v - The {@link Vec3} to translate by
    * @returns `this`
    */
-  translate(v: Readonly<Vec3Like>): Mat4;
+  translate(v: Readonly<Vec3Like>): this;
   /**
    * Rotates this {@link Mat4} by the given angle around the given axis
    * Equivalent to `Mat4.rotate(this, this, rad, axis);`
+   * @category Methods
    *
    * @param rad - the angle to rotate the matrix by
    * @param axis - the axis to rotate around
-   * @returns `out`
+   * @returns `this`
    */
-  rotate(rad: number, axis: Readonly<Vec3Like>): Mat4;
+  rotate(rad: number, axis: Readonly<Vec3Like>): this;
   /**
    * Scales this {@link Mat4} by the dimensions in the given vec3 not using vectorization
    * Equivalent to `Mat4.scale(this, this, v);`
+   * @category Methods
    *
    * @param v - The {@link Vec3} to scale the matrix by
    * @returns `this`
    */
-  scale(v: Readonly<Vec3Like>): Mat4;
+  scale(v: Readonly<Vec3Like>): this;
   /**
    * Rotates this {@link Mat4} by the given angle around the X axis
    * Equivalent to `Mat4.rotateX(this, this, rad);`
+   * @category Methods
    *
    * @param rad - the angle to rotate the matrix by
    * @returns `this`
    */
-  rotateX(rad: number): Mat4;
+  rotateX(rad: number): this;
   /**
    * Rotates this {@link Mat4} by the given angle around the Y axis
    * Equivalent to `Mat4.rotateY(this, this, rad);`
+   * @category Methods
    *
    * @param rad - the angle to rotate the matrix by
    * @returns `this`
    */
-  rotateY(rad: number): Mat4;
+  rotateY(rad: number): this;
   /**
    * Rotates this {@link Mat4} by the given angle around the Z axis
    * Equivalent to `Mat4.rotateZ(this, this, rad);`
+   * @category Methods
    *
    * @param rad - the angle to rotate the matrix by
    * @returns `this`
    */
-  rotateZ(rad: number): Mat4;
+  rotateZ(rad: number): this;
   /**
    * Generates a perspective projection matrix with the given bounds.
    * The near/far clip planes correspond to a normalized device coordinate Z range of [-1, 1],
    * which matches WebGL/OpenGL's clip volume.
    * Passing null/undefined/no value for far will generate infinite projection matrix.
    * Equivalent to `Mat4.perspectiveNO(this, fovy, aspect, near, far);`
+   * @category Methods
    *
    * @param fovy - Vertical field of view in radians
    * @param aspect - Aspect ratio. typically viewport width/height
@@ -1167,13 +1216,14 @@ declare class Mat4 extends Float32Array {
    * @param far - Far bound of the frustum, can be null or Infinity
    * @returns `this`
    */
-  perspectiveNO(fovy: number, aspect: number, near: number, far: number): Mat4;
+  perspectiveNO(fovy: number, aspect: number, near: number, far: number): this;
   /**
    * Generates a perspective projection matrix suitable for WebGPU with the given bounds.
    * The near/far clip planes correspond to a normalized device coordinate Z range of [0, 1],
    * which matches WebGPU/Vulkan/DirectX/Metal's clip volume.
    * Passing null/undefined/no value for far will generate infinite projection matrix.
    * Equivalent to `Mat4.perspectiveZO(this, fovy, aspect, near, far);`
+   * @category Methods
    *
    * @param fovy - Vertical field of view in radians
    * @param aspect - Aspect ratio. typically viewport width/height
@@ -1181,12 +1231,13 @@ declare class Mat4 extends Float32Array {
    * @param far - Far bound of the frustum, can be null or Infinity
    * @returns `this`
    */
-  perspectiveZO(fovy: number, aspect: number, near: number, far: number): Mat4;
+  perspectiveZO(fovy: number, aspect: number, near: number, far: number): this;
   /**
    * Generates a orthogonal projection matrix with the given bounds.
    * The near/far clip planes correspond to a normalized device coordinate Z range of [-1, 1],
    * which matches WebGL/OpenGL's clip volume.
    * Equivalent to `Mat4.orthoNO(this, left, right, bottom, top, near, far);`
+   * @category Methods
    *
    * @param left - Left bound of the frustum
    * @param right - Right bound of the frustum
@@ -1196,12 +1247,13 @@ declare class Mat4 extends Float32Array {
    * @param far - Far bound of the frustum
    * @returns `this`
    */
-  orthoNO(left: number, right: number, bottom: number, top: number, near: number, far: number): Mat4;
+  orthoNO(left: number, right: number, bottom: number, top: number, near: number, far: number): this;
   /**
    * Generates a orthogonal projection matrix with the given bounds.
    * The near/far clip planes correspond to a normalized device coordinate Z range of [0, 1],
    * which matches WebGPU/Vulkan/DirectX/Metal's clip volume.
    * Equivalent to `Mat4.orthoZO(this, left, right, bottom, top, near, far);`
+   * @category Methods
    *
    * @param left - Left bound of the frustum
    * @param right - Right bound of the frustum
@@ -1211,7 +1263,7 @@ declare class Mat4 extends Float32Array {
    * @param far - Far bound of the frustum
    * @returns `this`
    */
-  orthoZO(left: number, right: number, bottom: number, top: number, near: number, far: number): Mat4;
+  orthoZO(left: number, right: number, bottom: number, top: number, near: number, far: number): this;
   /**
    * @category Static
    *
@@ -1282,7 +1334,7 @@ declare class Mat4 extends Float32Array {
    *
    * @param out - the receiving matrix
    * @param a - the source matrix
-   * @returns `out` or `null` if the matrix is not invertable
+   * @returns `out` or `null` if the matrix is not invertible
    */
   static invert(out: Mat4Like, a: Mat4Like): Mat4Like | null;
   /**
@@ -1381,9 +1433,10 @@ declare class Mat4 extends Float32Array {
   /**
    * Creates a {@link Mat4} from a vector translation
    * This is equivalent to (but much faster than):
-   *
-   *     mat4.identity(dest);
-   *     mat4.translate(dest, dest, vec);
+   * ```js
+   *   mat4.identity(dest);
+   *   mat4.translate(dest, dest, vec);
+   * ```
    * @category Static
    *
    * @param out - {@link Mat4} receiving operation result
@@ -1394,9 +1447,10 @@ declare class Mat4 extends Float32Array {
   /**
    * Creates a {@link Mat4} from a vector scaling
    * This is equivalent to (but much faster than):
-   *
-   *     mat4.identity(dest);
-   *     mat4.scale(dest, dest, vec);
+   * ```js
+   *   mat4.identity(dest);
+   *   mat4.scale(dest, dest, vec);
+   * ```
    * @category Static
    *
    * @param out - {@link Mat4} receiving operation result
@@ -1407,9 +1461,10 @@ declare class Mat4 extends Float32Array {
   /**
    * Creates a {@link Mat4} from a given angle around a given axis
    * This is equivalent to (but much faster than):
-   *
-   *     mat4.identity(dest);
-   *     mat4.rotate(dest, dest, rad, axis);
+   * ```js
+   *   mat4.identity(dest);
+   *   mat4.rotate(dest, dest, rad, axis);
+   * ```
    * @category Static
    *
    * @param out - {@link Mat4} receiving operation result
@@ -1421,9 +1476,10 @@ declare class Mat4 extends Float32Array {
   /**
    * Creates a matrix from the given angle around the X axis
    * This is equivalent to (but much faster than):
-   *
-   *     mat4.identity(dest);
-   *     mat4.rotateX(dest, dest, rad);
+   * ```js
+   *   mat4.identity(dest);
+   *   mat4.rotateX(dest, dest, rad);
+   * ```
    * @category Static
    *
    * @param out - mat4 receiving operation result
@@ -1434,9 +1490,10 @@ declare class Mat4 extends Float32Array {
   /**
    * Creates a matrix from the given angle around the Y axis
    * This is equivalent to (but much faster than):
-   *
-   *     mat4.identity(dest);
-   *     mat4.rotateY(dest, dest, rad);
+   * ```js
+   *   mat4.identity(dest);
+   *   mat4.rotateY(dest, dest, rad);
+   * ```
    * @category Static
    *
    * @param out - mat4 receiving operation result
@@ -1447,9 +1504,10 @@ declare class Mat4 extends Float32Array {
   /**
    * Creates a matrix from the given angle around the Z axis
    * This is equivalent to (but much faster than):
-   *
-   *     mat4.identity(dest);
-   *     mat4.rotateZ(dest, dest, rad);
+   * ```js
+   *   mat4.identity(dest);
+   *   mat4.rotateZ(dest, dest, rad);
+   * ```
    * @category Static
    *
    * @param out - mat4 receiving operation result
@@ -1460,12 +1518,13 @@ declare class Mat4 extends Float32Array {
   /**
    * Creates a matrix from a quaternion rotation and vector translation
    * This is equivalent to (but much faster than):
-   *
-   *     mat4.identity(dest);
-   *     mat4.translate(dest, vec);
-   *     let quatMat = mat4.create();
-   *     quat4.toMat4(quat, quatMat);
-   *     mat4.multiply(dest, quatMat);
+   * ```js
+   *   mat4.identity(dest);
+   *   mat4.translate(dest, vec);
+   *   let quatMat = mat4.create();
+   *   quat4.toMat4(quat, quatMat);
+   *   mat4.multiply(dest, quatMat);
+   * ```
    * @category Static
    *
    * @param out - mat4 receiving operation result
@@ -1489,7 +1548,7 @@ declare class Mat4 extends Float32Array {
    *
    * @param out - Matrix receiving operation result
    * @param a - Mat4 to derive the normal matrix from
-   * @returns `out` or `null` if the matrix is not invertable
+   * @returns `out` or `null` if the matrix is not invertible
    */
   static normalFromMat4(out: Mat4Like, a: Readonly<Mat4Like>): Mat4Like | null;
   /**
@@ -1556,13 +1615,14 @@ declare class Mat4 extends Float32Array {
   /**
    * Creates a matrix from a quaternion rotation, vector translation and vector scale
    * This is equivalent to (but much faster than):
-   *
-   *     mat4.identity(dest);
-   *     mat4.translate(dest, vec);
-   *     let quatMat = mat4.create();
-   *     quat4.toMat4(quat, quatMat);
-   *     mat4.multiply(dest, quatMat);
-   *     mat4.scale(dest, scale);
+   * ```js
+   *   mat4.identity(dest);
+   *   mat4.translate(dest, vec);
+   *   let quatMat = mat4.create();
+   *   quat4.toMat4(quat, quatMat);
+   *   mat4.multiply(dest, quatMat);
+   *   mat4.scale(dest, scale);
+   * ```
    * @category Static
    *
    * @param out - mat4 receiving operation result
@@ -1578,17 +1638,18 @@ declare class Mat4 extends Float32Array {
     s: Readonly<Vec3Like>,
   ): Mat4Like;
   /**
-   * Creates a matrix from a quaternion rotation, vector translation and vector scale, rotating and scaling around the given origin
-   * This is equivalent to (but much faster than):
-   *
-   *     mat4.identity(dest);
-   *     mat4.translate(dest, vec);
-   *     mat4.translate(dest, origin);
-   *     let quatMat = mat4.create();
-   *     quat4.toMat4(quat, quatMat);
-   *     mat4.multiply(dest, quatMat);
-   *     mat4.scale(dest, scale)
-   *     mat4.translate(dest, negativeOrigin);
+   * Creates a matrix from a quaternion rotation, vector translation and vector scale, rotating and scaling around the
+   * given origin. This is equivalent to (but much faster than):
+   * ```js
+   *   mat4.identity(dest);
+   *   mat4.translate(dest, vec);
+   *   mat4.translate(dest, origin);
+   *   let quatMat = mat4.create();
+   *   quat4.toMat4(quat, quatMat);
+   *   mat4.multiply(dest, quatMat);
+   *   mat4.scale(dest, scale)
+   *   mat4.translate(dest, negativeOrigin);
+   * ```
    * @category Static
    *
    * @param out - mat4 receiving operation result
@@ -1715,9 +1776,8 @@ declare class Mat4 extends Float32Array {
    */
   static perspectiveZO(out: Mat4Like, fovy: number, aspect: number, near: number, far?: number): Mat4Like;
   /**
-   * Generates a perspective projection matrix with the given field of view.
-   * This is primarily useful for generating projection matrices to be used
-   * with the still experiemental WebVR API.
+   * Generates a perspective projection matrix with the given field of view. This is primarily useful for generating
+   * projection matrices to be used with the still experimental WebVR API.
    * @category Static
    *
    * @param out - mat4 frustum matrix will be written into
@@ -1727,11 +1787,20 @@ declare class Mat4 extends Float32Array {
    * @returns `out`
    * @deprecated
    */
-  static perspectiveFromFieldOfView(out: Mat4Like, fov: any, near: number, far: number): Mat4Like;
+  static perspectiveFromFieldOfView(
+    out: Mat4Like,
+    fov: {
+      upDegrees: number;
+      downDegrees: number;
+      leftDegrees: number;
+      rightDegrees: number;
+    },
+    near: number,
+    far: number,
+  ): Mat4Like;
   /**
-   * Generates a orthogonal projection matrix with the given bounds.
-   * The near/far clip planes correspond to a normalized device coordinate Z range of [-1, 1],
-   * which matches WebGL/OpenGL's clip volume.
+   * Generates an orthogonal projection matrix with the given bounds. The near / far clip planes correspond to a
+   * normalized device coordinate Z range of [-1, 1], which matches WebGL / OpenGLs clip volume.
    * @category Static
    *
    * @param out - mat4 frustum matrix will be written into
@@ -1767,9 +1836,8 @@ declare class Mat4 extends Float32Array {
     far: number,
   ): Mat4Like;
   /**
-   * Generates a orthogonal projection matrix with the given bounds.
-   * The near/far clip planes correspond to a normalized device coordinate Z range of [0, 1],
-   * which matches WebGPU/Vulkan/DirectX/Metal's clip volume.
+   * Generates a orthogonal projection matrix with the given bounds. The near / far clip planes correspond to a
+   * normalized device coordinate Z range of [0, 1], which matches WebGPU / Vulkan / DirectX / Metal's clip volume.
    * @category Static
    *
    * @param out - mat4 frustum matrix will be written into
@@ -1791,8 +1859,8 @@ declare class Mat4 extends Float32Array {
     far: number,
   ): Mat4Like;
   /**
-   * Generates a look-at matrix with the given eye position, focal point, and up axis.
-   * If you want a matrix that actually makes an object look at another object, you should use targetTo instead.
+   * Generates a look-at matrix with the given eye position, focal point, and up axis. If you want a matrix that
+   * actually makes an object look at another object, you should use targetTo instead.
    * @category Static
    *
    * @param out - mat4 frustum matrix will be written into
@@ -1868,7 +1936,7 @@ declare class Mat4 extends Float32Array {
    */
   static multiplyScalarAndAdd(out: Mat4Like, a: Readonly<Mat4Like>, b: Readonly<Mat4Like>, scale: number): Mat4Like;
   /**
-   * Returns whether or not two {@link Mat4}s have exactly the same elements in the same position (when compared with ===)
+   * Returns whether two {@link Mat4}s have exactly the same elements in the same position (when compared with ===).
    * @category Static
    *
    * @param a - The first matrix.
@@ -1877,7 +1945,7 @@ declare class Mat4 extends Float32Array {
    */
   static exactEquals(a: Readonly<Mat4Like>, b: Readonly<Mat4Like>): boolean;
   /**
-   * Returns whether or not two {@link Mat4}s have approximately the same elements in the same position.
+   * Returns whether two {@link Mat4}s have approximately the same elements in the same position.
    * @category Static
    *
    * @param a - The first matrix.
@@ -1908,25 +1976,25 @@ declare class Quat extends Float32Array {
   constructor(...values: [Readonly<QuatLike> | ArrayBufferLike, number?] | number[]);
   /**
    * The x component of the quaternion. Equivalent to `this[0];`
-   * @category Quaternion components
+   * @category Quaternion Components
    */
   get x(): number;
   set x(value: number);
   /**
    * The y component of the quaternion. Equivalent to `this[1];`
-   * @category Quaternion components
+   * @category Quaternion Components
    */
   get y(): number;
   set y(value: number);
   /**
    * The z component of the quaternion. Equivalent to `this[2];`
-   * @category Quaternion components
+   * @category Quaternion Components
    */
   get z(): number;
   set z(value: number);
   /**
    * The w component of the quaternion. Equivalent to `this[3];`
-   * @category Quaternion components
+   * @category Quaternion Components
    */
   get w(): number;
   set w(value: number);
@@ -1936,80 +2004,93 @@ declare class Quat extends Float32Array {
    *
    * Magnitude is used because the `length` attribute is already defined by
    * TypedArrays to mean the number of elements in the array.
+   *
+   * @category Accessors
    */
   get magnitude(): number;
   /**
    * Alias for {@link Quat.magnitude}
+   *
+   * @category Accessors
    */
   get mag(): number;
   /**
    * A string representation of `this`
    * Equivalent to `Quat.str(this);`
+   *
+   * @category Accessors
    */
   get str(): string;
   /**
    * Copy the values from another {@link Quat} into `this`.
+   * @category Methods
    *
    * @param a the source quaternion
    * @returns `this`
    */
-  copy(a: Readonly<QuatLike>): Quat;
+  copy(a: Readonly<QuatLike>): this;
   /**
    * Set `this` to the identity quaternion
    * Equivalent to Quat.identity(this)
+   * @category Methods
    *
    * @returns `this`
    */
-  identity(): Quat;
+  identity(): this;
   /**
    * Multiplies `this` by a {@link Quat}.
    * Equivalent to `Quat.multiply(this, this, b);`
+   * @category Methods
    *
    * @param b - The vector to multiply `this` by
    * @returns `this`
    */
-  multiply(b: Readonly<QuatLike>): Quat;
+  multiply(b: Readonly<QuatLike>): this;
   /**
    * Alias for {@link Quat.multiply}
+   * @category Methods
    */
-  mul(b: Readonly<QuatLike>): Quat;
+  mul(b: Readonly<QuatLike>): this;
   /**
    * Rotates `this` by the given angle about the X axis
    * Equivalent to `Quat.rotateX(this, this, rad);`
+   * @category Methods
    *
    * @param rad - angle (in radians) to rotate
    * @returns `this`
    */
-  rotateX(rad: number): Quat;
+  rotateX(rad: number): this;
   /**
    * Rotates `this` by the given angle about the Y axis
    * Equivalent to `Quat.rotateY(this, this, rad);`
+   * @category Methods
    *
    * @param rad - angle (in radians) to rotate
    * @returns `this`
    */
-  rotateY(rad: number): Quat;
+  rotateY(rad: number): this;
   /**
    * Rotates `this` by the given angle about the Z axis
    * Equivalent to `Quat.rotateZ(this, this, rad);`
+   * @category Methods
    *
    * @param rad - angle (in radians) to rotate
    * @returns `this`
    */
-  rotateZ(rad: number): Quat;
+  rotateZ(rad: number): this;
   /**
    * Inverts `this`
    * Equivalent to `Quat.invert(this, this);`
+   * @category Methods
    *
    * @returns `this`
    */
-  invert(): Quat;
+  invert(): this;
   /**
    * Scales `this` by a scalar number
    * Equivalent to `Quat.scale(this, this, scale);`
+   * @category Methods
    *
-   * @param out - the receiving vector
-   * @param a - the vector to scale
    * @param scale - amount to scale the vector by
    * @returns `this`
    */
@@ -2017,6 +2098,7 @@ declare class Quat extends Float32Array {
   /**
    * Calculates the dot product of `this` and another {@link Quat}
    * Equivalent to `Quat.dot(this, b);`
+   * @category Methods
    *
    * @param b - the second operand
    * @returns dot product of `this` and b
@@ -2058,7 +2140,7 @@ declare class Quat extends Float32Array {
    * Gets the rotation axis and angle for a given
    *  quaternion. If a quaternion is created with
    *  setAxisAngle, this method will return the same
-   *  values as providied in the original parameter list
+   *  values as provided in the original parameter list
    *  OR functionally equivalent values.
    * Example: The quaternion formed by axis [0, 0, 1] and
    *  angle -90 is the same as the quaternion formed by
@@ -2080,7 +2162,7 @@ declare class Quat extends Float32Array {
    */
   static getAngle(a: Readonly<QuatLike>, b: Readonly<QuatLike>): number;
   /**
-   * Multiplies two quat's
+   * Multiplies two quaternions.
    * @category Static
    *
    * @param out - the receiving quaternion
@@ -2187,7 +2269,7 @@ declare class Quat extends Float32Array {
   static invert(out: QuatLike, a: Readonly<QuatLike>): QuatLike;
   /**
    * Calculates the conjugate of a quat
-   * If the quaternion is normalized, this function is faster than quat.inverse and produces the same result.
+   * If the quaternion is normalized, this function is faster than `quat.inverse` and produces the same result.
    * @category Static
    *
    * @param out - the receiving quaternion
@@ -2199,7 +2281,7 @@ declare class Quat extends Float32Array {
    * Creates a quaternion from the given 3x3 rotation matrix.
    *
    * NOTE: The resultant quaternion is not normalized, so you should be sure
-   * to renormalize the quaternion yourself where necessary.
+   * to re-normalize the quaternion yourself where necessary.
    * @category Static
    *
    * @param out - the receiving quaternion
@@ -2360,7 +2442,7 @@ declare class Quat extends Float32Array {
    */
   static normalize(out: QuatLike, a: Readonly<QuatLike>): QuatLike;
   /**
-   * Returns whether or not the quaternions have exactly the same elements in the same position (when compared with ===)
+   * Returns whether the quaternions have exactly the same elements in the same position (when compared with ===)
    * @category Static
    *
    * @param a - The first quaternion.
@@ -2369,7 +2451,7 @@ declare class Quat extends Float32Array {
    */
   static exactEquals(a: Readonly<QuatLike>, b: Readonly<QuatLike>): boolean;
   /**
-   * Returns whether or not the quaternions have approximately the same elements in the same position.
+   * Returns whether the quaternions have approximately the same elements in the same position.
    * @category Static
    *
    * @param a - The first vector.
@@ -2439,15 +2521,18 @@ declare class Quat2 extends Float32Array {
   /**
    * A string representation of `this`
    * Equivalent to `Quat2.str(this);`
+   *
+   * @category Accessors
    */
   get str(): string;
   /**
    * Copy the values from another {@link Quat2} into `this`.
+   * @category Methods
    *
    * @param a the source dual quaternion
    * @returns `this`
    */
-  copy(a: Readonly<Quat2Like>): Quat2;
+  copy(a: Readonly<Quat2Like>): this;
   /**
    * @category Static
    *
@@ -2777,8 +2862,8 @@ declare class Quat2 extends Float32Array {
    */
   static invert(out: Quat2Like, a: Readonly<Quat2Like>): Quat2Like;
   /**
-   * Calculates the conjugate of a {@link Quat2}
-   * If the dual quaternion is normalized, this function is faster than {@link Quat2.invert} and produces the same result.
+   * Calculates the conjugate of a {@link Quat2}. If the dual quaternion is normalized, this function is faster than
+   * {@link Quat2.invert} and produces the same result.
    * @category Static
    *
    * @param out - the receiving dual quaternion
@@ -2842,7 +2927,7 @@ declare class Quat2 extends Float32Array {
    */
   static str(a: Readonly<Quat2Like>): string;
   /**
-   * Returns whether or not the {@link Quat2}s have exactly the same elements in the same position (when compared with ===)
+   * Returns whether the {@link Quat2}s have exactly the same elements in the same position (when compared with ===)
    * @category Static
    *
    * @param a - The first dual quaternion.
@@ -2851,7 +2936,7 @@ declare class Quat2 extends Float32Array {
    */
   static exactEquals(a: Readonly<Quat2Like>, b: Readonly<Quat2Like>): boolean;
   /**
-   * Returns whether or not the {@link Quat2}s have approximately the same elements in the same position.
+   * Returns whether the {@link Quat2}s have approximately the same elements in the same position.
    * @category Static
    *
    * @param a - The first dual quaternion.
@@ -2873,25 +2958,25 @@ declare class Vec2 extends Float32Array {
   constructor(...values: [Readonly<Vec2Like> | ArrayBufferLike, number?] | number[]);
   /**
    * The x component of the vector. Equivalent to `this[0];`
-   * @category Vector components
+   * @category Vector Components
    */
   get x(): number;
   set x(value: number);
   /**
    * The y component of the vector. Equivalent to `this[1];`
-   * @category Vector components
+   * @category Vector Components
    */
   get y(): number;
   set y(value: number);
   /**
    * The r component of the vector. Equivalent to `this[0];`
-   * @category Color components
+   * @category Color Components
    */
   get r(): number;
   set r(value: number);
   /**
    * The g component of the vector. Equivalent to `this[1];`
-   * @category Color components
+   * @category Color Components
    */
   get g(): number;
   set g(value: number);
@@ -2901,97 +2986,118 @@ declare class Vec2 extends Float32Array {
    *
    * Magnitude is used because the `length` attribute is already defined by
    * TypedArrays to mean the number of elements in the array.
+   *
+   * @category Accessors
    */
   get magnitude(): number;
   /**
    * Alias for {@link Vec2.magnitude}
+   *
+   * @category Accessors
    */
   get mag(): number;
   /**
    * The squared magnitude (length) of `this`.
    * Equivalent to `Vec2.squaredMagnitude(this);`
+   *
+   * @category Accessors
    */
   get squaredMagnitude(): number;
   /**
    * Alias for {@link Vec2.squaredMagnitude}
+   *
+   * @category Accessors
    */
   get sqrMag(): number;
   /**
    * A string representation of `this`
    * Equivalent to `Vec2.str(this);`
+   *
+   * @category Accessors
    */
   get str(): string;
   /**
    * Copy the values from another {@link Vec2} into `this`.
+   * @category Methods
    *
    * @param a the source vector
    * @returns `this`
    */
-  copy(a: Readonly<Vec2Like>): Vec2;
+  copy(a: Readonly<Vec2Like>): this;
   /**
    * Adds a {@link Vec2} to `this`.
    * Equivalent to `Vec2.add(this, this, b);`
+   * @category Methods
    *
    * @param b - The vector to add to `this`
    * @returns `this`
    */
-  add(b: Readonly<Vec2Like>): Vec2;
+  add(b: Readonly<Vec2Like>): this;
   /**
    * Subtracts a {@link Vec2} from `this`.
    * Equivalent to `Vec2.subtract(this, this, b);`
+   * @category Methods
    *
    * @param b - The vector to subtract from `this`
    * @returns `this`
    */
-  subtract(b: Readonly<Vec2Like>): Vec2;
+  subtract(b: Readonly<Vec2Like>): this;
   /**
    * Alias for {@link Vec2.subtract}
+   * @category Methods
    */
-  sub(b: Readonly<Vec2Like>): Vec2;
+  sub(b: Readonly<Vec2Like>): this;
   /**
    * Multiplies `this` by a {@link Vec2}.
    * Equivalent to `Vec2.multiply(this, this, b);`
+   * @category Methods
    *
    * @param b - The vector to multiply `this` by
    * @returns `this`
    */
-  multiply(b: Readonly<Vec2Like>): Vec2;
+  multiply(b: Readonly<Vec2Like>): this;
   /**
    * Alias for {@link Vec2.multiply}
+   * @category Methods
    */
-  mul(b: Readonly<Vec2Like>): Vec2;
+  mul(b: Readonly<Vec2Like>): this;
   /**
    * Divides `this` by a {@link Vec2}.
    * Equivalent to `Vec2.divide(this, this, b);`
+   * @category Methods
    *
    * @param b - The vector to divide `this` by
-   * @returns {Vec2} `this`
+   * @returns `this`
    */
-  divide(b: Readonly<Vec2Like>): Vec2;
+  divide(b: Readonly<Vec2Like>): this;
   /**
    * Alias for {@link Vec2.divide}
+   * @category Methods
    */
-  div(b: Readonly<Vec2Like>): Vec2;
+  div(b: Readonly<Vec2Like>): this;
   /**
    * Scales `this` by a scalar number.
    * Equivalent to `Vec2.scale(this, this, b);`
+   * @category Methods
    *
    * @param b - Amount to scale `this` by
    * @returns `this`
    */
-  scale(b: number): Vec2;
+  scale(b: number): this;
   /**
    * Calculates `this` scaled by a scalar value then adds the result to `this`.
    * Equivalent to `Vec2.scaleAndAdd(this, this, b, scale);`
+   * @category Methods
    *
    * @param b - The vector to add to `this`
    * @param scale - The amount to scale `b` by before adding
    * @returns `this`
    */
-  scaleAndAdd(b: Readonly<Vec2Like>, scale: number): Vec2;
+  scaleAndAdd(b: Readonly<Vec2Like>, scale: number): this;
   /**
-   * Calculates the euclidian distance between another {@link Vec2} and `this`.
+   * Calculates the Euclidean distance between another {@link Vec2} and `this`.
    * Equivalent to `Vec2.distance(this, b);`
+   * @category Methods
    *
    * @param b - The vector to calculate the distance to
    * @returns Distance between `this` and `b`
@@ -2999,11 +3105,13 @@ declare class Vec2 extends Float32Array {
   distance(b: Readonly<Vec2Like>): number;
   /**
    * Alias for {@link Vec2.distance}
+   * @category Methods
    */
   dist(b: Readonly<Vec2Like>): number;
   /**
-   * Calculates the squared euclidian distance between another {@link Vec2} and `this`.
+   * Calculates the squared Euclidean distance between another {@link Vec2} and `this`.
    * Equivalent to `Vec2.squaredDistance(this, b);`
+   * @category Methods
    *
    * @param b The vector to calculate the squared distance to
    * @returns Squared distance between `this` and `b`
@@ -3011,32 +3119,37 @@ declare class Vec2 extends Float32Array {
   squaredDistance(b: Readonly<Vec2Like>): number;
   /**
    * Alias for {@link Vec2.squaredDistance}
+   * @category Methods
    */
   sqrDist(b: Readonly<Vec2Like>): number;
   /**
    * Negates the components of `this`.
    * Equivalent to `Vec2.negate(this, this);`
+   * @category Methods
    *
    * @returns `this`
    */
-  negate(): Vec2;
+  negate(): this;
   /**
    * Inverts the components of `this`.
    * Equivalent to `Vec2.inverse(this, this);`
+   * @category Methods
    *
    * @returns `this`
    */
-  invert(): Vec2;
+  invert(): this;
   /**
    * Sets each component of `this` to it's absolute value.
    * Equivalent to `Vec2.abs(this, this);`
+   * @category Methods
    *
    * @returns `this`
    */
-  abs(): Vec2;
+  abs(): this;
   /**
    * Calculates the dot product of this and another {@link Vec2}.
    * Equivalent to `Vec2.dot(this, b);`
+   * @category Methods
    *
    * @param b - The second operand
    * @returns Dot product of `this` and `b`
@@ -3045,10 +3158,11 @@ declare class Vec2 extends Float32Array {
   /**
    * Normalize `this`.
    * Equivalent to `Vec2.normalize(this, this);`
+   * @category Methods
    *
    * @returns `this`
    */
-  normalize(): Vec2;
+  normalize(): this;
   /**
    * @category Static
    *
@@ -3222,7 +3336,7 @@ declare class Vec2 extends Float32Array {
    */
   static scaleAndAdd(out: Vec2Like, a: Readonly<Vec2Like>, b: Readonly<Vec2Like>, scale: number): Vec2Like;
   /**
-   * Calculates the euclidian distance between two {@link Vec2}s
+   * Calculates the Euclidean distance between two {@link Vec2}s
    * @category Static
    *
    * @param a - The first operand
@@ -3236,7 +3350,7 @@ declare class Vec2 extends Float32Array {
    */
   static dist(a: Readonly<Vec2Like>, b: Readonly<Vec2Like>): number;
   /**
-   * Calculates the squared euclidian distance between two {@link Vec2}s
+   * Calculates the squared Euclidean distance between two {@link Vec2}s
    * @category Static
    *
    * @param a - The first operand
@@ -3287,6 +3401,7 @@ declare class Vec2 extends Float32Array {
   static squaredLength(a: Readonly<Vec2Like>): number;
   /**
    * Alias for {@link Vec2.squaredLength}
+   * @category Static
    */
   static sqrLen(a: Readonly<Vec2Like>, b: Readonly<Vec2Like>): number;
   /**
@@ -3364,6 +3479,7 @@ declare class Vec2 extends Float32Array {
    * @param a - The vector to transform
    * @param m - Matrix to transform with
    * @returns `out`
+   * @category Static
    */
   static transformMat2(out: Vec2Like, a: Readonly<Vec2Like>, m: Readonly<Mat2Like>): Vec2Like;
   /**
@@ -3373,6 +3489,7 @@ declare class Vec2 extends Float32Array {
    * @param a - The vector to transform
    * @param m - Matrix to transform with
    * @returns `out`
+   * @category Static
    */
   static transformMat2d(out: Vec2Like, a: Readonly<Vec2Like>, m: Readonly<Mat2dLike>): Vec2Like;
   /**
@@ -3383,6 +3500,7 @@ declare class Vec2 extends Float32Array {
    * @param a - The vector to transform
    * @param m - Matrix to transform with
    * @returns `out`
+   * @category Static
    */
   static transformMat3(out: Vec2Like, a: Readonly<Vec2Like>, m: Readonly<Mat3Like>): Vec2Like;
   /**
@@ -3394,6 +3512,7 @@ declare class Vec2 extends Float32Array {
    * @param a - The vector to transform
    * @param m - Matrix to transform with
    * @returns `out`
+   * @category Static
    */
   static transformMat4(out: Vec2Like, a: Readonly<Vec2Like>, m: Readonly<Mat4Like>): Vec2Like;
   /**
@@ -3425,7 +3544,7 @@ declare class Vec2 extends Float32Array {
    */
   static zero(out: Vec2Like): Vec2Like;
   /**
-   * Returns whether or not the vectors have exactly the same elements in the same position (when compared with ===)
+   * Returns whether the vectors have exactly the same elements in the same position (when compared with ===)
    * @category Static
    *
    * @param a - The first vector.
@@ -3434,7 +3553,7 @@ declare class Vec2 extends Float32Array {
    */
   static exactEquals(a: Readonly<Vec2Like>, b: Readonly<Vec2Like>): boolean;
   /**
-   * Returns whether or not the vectors have approximately the same elements in the same position.
+   * Returns whether the vectors have approximately the same elements in the same position.
    * @category Static
    *
    * @param a - The first vector.
@@ -3464,37 +3583,37 @@ declare class Vec3 extends Float32Array {
   constructor(...values: [Readonly<Vec3Like> | ArrayBufferLike, number?] | number[]);
   /**
    * The x component of the vector. Equivalent to `this[0];`
-   * @category Vector components
+   * @category Vector Components
    */
   get x(): number;
   set x(value: number);
   /**
    * The y component of the vector. Equivalent to `this[1];`
-   * @category Vector components
+   * @category Vector Components
    */
   get y(): number;
   set y(value: number);
   /**
    * The z component of the vector. Equivalent to `this[2];`
-   * @category Vector components
+   * @category Vector Components
    */
   get z(): number;
   set z(value: number);
   /**
    * The r component of the vector. Equivalent to `this[0];`
-   * @category Color components
+   * @category Color Components
    */
   get r(): number;
   set r(value: number);
   /**
    * The g component of the vector. Equivalent to `this[1];`
-   * @category Color components
+   * @category Color Components
    */
   get g(): number;
   set g(value: number);
   /**
    * The b component of the vector. Equivalent to `this[2];`
-   * @category Color components
+   * @category Color Components
    */
   get b(): number;
   set b(value: number);
@@ -3504,97 +3623,118 @@ declare class Vec3 extends Float32Array {
    *
    * Magnitude is used because the `length` attribute is already defined by
    * TypedArrays to mean the number of elements in the array.
+   *
+   * @category Accessors
    */
   get magnitude(): number;
   /**
    * Alias for {@link Vec3.magnitude}
+   *
+   * @category Accessors
    */
   get mag(): number;
   /**
    * The squared magnitude (length) of `this`.
    * Equivalent to `Vec3.squaredMagnitude(this);`
+   *
+   * @category Accessors
    */
   get squaredMagnitude(): number;
   /**
    * Alias for {@link Vec3.squaredMagnitude}
+   *
+   * @category Accessors
    */
   get sqrMag(): number;
   /**
    * A string representation of `this`
    * Equivalent to `Vec3.str(this);`
+   *
+   * @category Accessors
    */
   get str(): string;
   /**
    * Copy the values from another {@link Vec3} into `this`.
+   * @category Methods
    *
    * @param a the source vector
    * @returns `this`
    */
-  copy(a: Readonly<Vec3Like>): Vec3;
+  copy(a: Readonly<Vec3Like>): this;
   /**
    * Adds a {@link Vec3} to `this`.
    * Equivalent to `Vec3.add(this, this, b);`
+   * @category Methods
    *
    * @param b - The vector to add to `this`
    * @returns `this`
    */
-  add(b: Readonly<Vec3Like>): Vec3;
+  add(b: Readonly<Vec3Like>): this;
   /**
    * Subtracts a {@link Vec3} from `this`.
    * Equivalent to `Vec3.subtract(this, this, b);`
+   * @category Methods
    *
    * @param b - The vector to subtract from `this`
    * @returns `this`
    */
-  subtract(b: Readonly<Vec3Like>): Vec3;
+  subtract(b: Readonly<Vec3Like>): this;
   /**
    * Alias for {@link Vec3.subtract}
+   * @category Methods
    */
-  sub(b: Readonly<Vec3Like>): Vec3;
+  sub(b: Readonly<Vec3Like>): this;
   /**
    * Multiplies `this` by a {@link Vec3}.
    * Equivalent to `Vec3.multiply(this, this, b);`
+   * @category Methods
    *
    * @param b - The vector to multiply `this` by
    * @returns `this`
    */
-  multiply(b: Readonly<Vec3Like>): Vec3;
+  multiply(b: Readonly<Vec3Like>): this;
   /**
    * Alias for {@link Vec3.multiply}
+   * @category Methods
    */
-  mul(b: Readonly<Vec3Like>): Vec3;
+  mul(b: Readonly<Vec3Like>): this;
   /**
    * Divides `this` by a {@link Vec3}.
    * Equivalent to `Vec3.divide(this, this, b);`
+   * @category Methods
    *
    * @param b - The vector to divide `this` by
    * @returns `this`
    */
-  divide(b: Readonly<Vec3Like>): Vec3;
+  divide(b: Readonly<Vec3Like>): this;
   /**
    * Alias for {@link Vec3.divide}
+   * @category Methods
    */
-  div(b: Readonly<Vec3Like>): Vec3;
+  div(b: Readonly<Vec3Like>): this;
   /**
    * Scales `this` by a scalar number.
    * Equivalent to `Vec3.scale(this, this, b);`
+   * @category Methods
    *
    * @param b - Amount to scale `this` by
    * @returns `this`
    */
-  scale(b: number): Vec3;
+  scale(b: number): this;
   /**
    * Calculates `this` scaled by a scalar value then adds the result to `this`.
    * Equivalent to `Vec3.scaleAndAdd(this, this, b, scale);`
+   * @category Methods
    *
    * @param b - The vector to add to `this`
    * @param scale - The amount to scale `b` by before adding
    * @returns `this`
    */
-  scaleAndAdd(b: Readonly<Vec3Like>, scale: number): Vec3;
+  scaleAndAdd(b: Readonly<Vec3Like>, scale: number): this;
   /**
-   * Calculates the euclidian distance between another {@link Vec3} and `this`.
+   * Calculates the Euclidean distance between another {@link Vec3} and `this`.
    * Equivalent to `Vec3.distance(this, b);`
+   * @category Methods
    *
    * @param b - The vector to calculate the distance to
    * @returns Distance between `this` and `b`
@@ -3602,11 +3742,13 @@ declare class Vec3 extends Float32Array {
   distance(b: Readonly<Vec3Like>): number;
   /**
    * Alias for {@link Vec3.distance}
+   * @category Methods
    */
   dist(b: Readonly<Vec3Like>): number;
   /**
-   * Calculates the squared euclidian distance between another {@link Vec3} and `this`.
+   * Calculates the squared Euclidean distance between another {@link Vec3} and `this`.
    * Equivalent to `Vec3.squaredDistance(this, b);`
+   * @category Methods
    *
    * @param b The vector to calculate the squared distance to
    * @returns Squared distance between `this` and `b`
@@ -3614,32 +3756,37 @@ declare class Vec3 extends Float32Array {
   squaredDistance(b: Readonly<Vec3Like>): number;
   /**
    * Alias for {@link Vec3.squaredDistance}
+   * @category Methods
    */
   sqrDist(b: Readonly<Vec3Like>): number;
   /**
    * Negates the components of `this`.
    * Equivalent to `Vec3.negate(this, this);`
+   * @category Methods
    *
    * @returns `this`
    */
-  negate(): Vec3;
+  negate(): this;
   /**
    * Inverts the components of `this`.
    * Equivalent to `Vec3.inverse(this, this);`
+   * @category Methods
    *
    * @returns `this`
    */
-  invert(): Vec3;
+  invert(): this;
   /**
-   * Sets each component of `this` to it's absolute value.
+   * Sets each component of `this` to its absolute value.
    * Equivalent to `Vec3.abs(this, this);`
+   * @category Methods
    *
    * @returns `this`
    */
-  abs(): Vec3;
+  abs(): this;
   /**
    * Calculates the dot product of this and another {@link Vec3}.
    * Equivalent to `Vec3.dot(this, b);`
+   * @category Methods
    *
    * @param b - The second operand
    * @returns Dot product of `this` and `b`
@@ -3648,10 +3795,11 @@ declare class Vec3 extends Float32Array {
   /**
    * Normalize `this`.
    * Equivalent to `Vec3.normalize(this, this);`
+   * @category Methods
    *
    * @returns `this`
    */
-  normalize(): Vec3;
+  normalize(): this;
   /**
    * @category Static
    *
@@ -3854,7 +4002,7 @@ declare class Vec3 extends Float32Array {
    */
   static scaleAndAdd(out: Vec3Like, a: Readonly<Vec3Like>, b: Readonly<Vec3Like>, scale: number): Vec3Like;
   /**
-   * Calculates the euclidian distance between two vec3's
+   * Calculates the Euclidean distance between two vec3's
    * @category Static
    *
    * @param a - the first operand
@@ -3864,10 +4012,11 @@ declare class Vec3 extends Float32Array {
   static distance(a: Readonly<Vec3Like>, b: Readonly<Vec3Like>): number;
   /**
    * Alias for {@link Vec3.distance}
+   * @category Static
    */
   static dist(a: Readonly<Vec3Like>, b: Readonly<Vec3Like>): number;
   /**
-   * Calculates the squared euclidian distance between two vec3's
+   * Calculates the squared Euclidean distance between two vec3's
    * @category Static
    *
    * @param a - the first operand
@@ -3877,6 +4026,7 @@ declare class Vec3 extends Float32Array {
   static squaredDistance(a: Readonly<Vec3Like>, b: Readonly<Vec3Like>): number;
   /**
    * Alias for {@link Vec3.squaredDistance}
+   * @category Static
    */
   static sqrDist(a: Readonly<Vec3Like>, b: Readonly<Vec3Like>): number;
   /**
@@ -3889,6 +4039,7 @@ declare class Vec3 extends Float32Array {
   static squaredLength(a: Readonly<Vec3Like>): number;
   /**
    * Alias for {@link Vec3.squaredLength}
+   * @category Static
    */
   static sqrLen(a: Readonly<Vec3Like>, b: Readonly<Vec3Like>): number;
   /**
@@ -4050,6 +4201,8 @@ declare class Vec3 extends Float32Array {
   static transformQuat(out: Vec3Like, a: Readonly<Vec3Like>, q: Readonly<QuatLike>): Vec3Like;
   /**
    * Rotate a 3D vector around the x-axis
+   * @category Static
+   *
    * @param out - The receiving vec3
    * @param a - The vec3 point to rotate
    * @param b - The origin of the rotation
@@ -4059,6 +4212,8 @@ declare class Vec3 extends Float32Array {
   static rotateX(out: Vec3Like, a: Readonly<Vec3Like>, b: Readonly<Vec3Like>, rad: number): Vec3Like;
   /**
    * Rotate a 3D vector around the y-axis
+   * @category Static
+   *
    * @param out - The receiving vec3
    * @param a - The vec3 point to rotate
    * @param b - The origin of the rotation
@@ -4068,6 +4223,8 @@ declare class Vec3 extends Float32Array {
   static rotateY(out: Vec3Like, a: Readonly<Vec3Like>, b: Readonly<Vec3Like>, rad: number): Vec3Like;
   /**
    * Rotate a 3D vector around the z-axis
+   * @category Static
+   *
    * @param out - The receiving vec3
    * @param a - The vec3 point to rotate
    * @param b - The origin of the rotation
@@ -4077,6 +4234,8 @@ declare class Vec3 extends Float32Array {
   static rotateZ(out: Vec3Like, a: Readonly<Vec3Like>, b: Readonly<Vec3Like>, rad: number): Vec3Like;
   /**
    * Get the angle between two 3D vectors
+   * @category Static
+   *
    * @param a - The first operand
    * @param b - The second operand
    * @returns The angle in radians
@@ -4099,7 +4258,7 @@ declare class Vec3 extends Float32Array {
    */
   static str(a: Readonly<Vec3Like>): string;
   /**
-   * Returns whether or not the vectors have exactly the same elements in the same position (when compared with ===)
+   * Returns whether the vectors have exactly the same elements in the same position (when compared with ===)
    * @category Static
    *
    * @param a - The first vector.
@@ -4108,7 +4267,7 @@ declare class Vec3 extends Float32Array {
    */
   static exactEquals(a: Readonly<Vec3Like>, b: Readonly<Vec3Like>): boolean;
   /**
-   * Returns whether or not the vectors have approximately the same elements in the same position.
+   * Returns whether the vectors have approximately the same elements in the same position.
    * @category Static
    *
    * @param a - The first vector.
@@ -4130,49 +4289,49 @@ declare class Vec4 extends Float32Array {
   constructor(...values: [Readonly<Vec4Like> | ArrayBufferLike, number?] | number[]);
   /**
    * The x component of the vector. Equivalent to `this[0];`
-   * @category Vector components
+   * @category Vector Components
    */
   get x(): number;
   set x(value: number);
   /**
    * The y component of the vector. Equivalent to `this[1];`
-   * @category Vector components
+   * @category Vector Components
    */
   get y(): number;
   set y(value: number);
   /**
    * The z component of the vector. Equivalent to `this[2];`
-   * @category Vector components
+   * @category Vector Components
    */
   get z(): number;
   set z(value: number);
   /**
    * The w component of the vector. Equivalent to `this[3];`
-   * @category Vector components
+   * @category Vector Components
    */
   get w(): number;
   set w(value: number);
   /**
    * The r component of the vector. Equivalent to `this[0];`
-   * @category Color components
+   * @category Color Components
    */
   get r(): number;
   set r(value: number);
   /**
    * The g component of the vector. Equivalent to `this[1];`
-   * @category Color components
+   * @category Color Components
    */
   get g(): number;
   set g(value: number);
   /**
    * The b component of the vector. Equivalent to `this[2];`
-   * @category Color components
+   * @category Color Components
    */
   get b(): number;
   set b(value: number);
   /**
    * The a component of the vector. Equivalent to `this[3];`
-   * @category Color components
+   * @category Color Components
    */
   get a(): number;
   set a(value: number);
@@ -4182,88 +4341,105 @@ declare class Vec4 extends Float32Array {
    *
    * Magnitude is used because the `length` attribute is already defined by
    * TypedArrays to mean the number of elements in the array.
+   *
+   * @category Accessors
    */
   get magnitude(): number;
   /**
    * Alias for {@link Vec4.magnitude}
+   *
+   * @category Accessors
    */
   get mag(): number;
   /**
    * A string representation of `this`
    * Equivalent to `Vec4.str(this);`
+   *
+   * @category Accessors
    */
   get str(): string;
   /**
    * Copy the values from another {@link Vec4} into `this`.
+   * @category Methods
    *
    * @param a the source vector
    * @returns `this`
    */
-  copy(a: Readonly<Vec4Like>): Vec4;
+  copy(a: Readonly<Vec4Like>): this;
   /**
    * Adds a {@link Vec4} to `this`.
    * Equivalent to `Vec4.add(this, this, b);`
+   * @category Methods
    *
    * @param b - The vector to add to `this`
    * @returns `this`
    */
-  add(b: Readonly<Vec4Like>): Vec4;
+  add(b: Readonly<Vec4Like>): this;
   /**
    * Subtracts a {@link Vec4} from `this`.
    * Equivalent to `Vec4.subtract(this, this, b);`
+   * @category Methods
    *
    * @param b - The vector to subtract from `this`
    * @returns `this`
    */
-  subtract(b: Readonly<Vec4Like>): Vec4;
+  subtract(b: Readonly<Vec4Like>): this;
   /**
    * Alias for {@link Vec4.subtract}
+   * @category Methods
    */
-  sub(b: Readonly<Vec4Like>): Vec4;
+  sub(b: Readonly<Vec4Like>): this;
   /**
    * Multiplies `this` by a {@link Vec4}.
    * Equivalent to `Vec4.multiply(this, this, b);`
+   * @category Methods
    *
    * @param b - The vector to multiply `this` by
    * @returns `this`
    */
-  multiply(b: Readonly<Vec4Like>): Vec4;
+  multiply(b: Readonly<Vec4Like>): this;
   /**
    * Alias for {@link Vec4.multiply}
+   * @category Methods
    */
-  mul(b: Readonly<Vec4Like>): Vec4;
+  mul(b: Readonly<Vec4Like>): this;
   /**
    * Divides `this` by a {@link Vec4}.
    * Equivalent to `Vec4.divide(this, this, b);`
+   * @category Methods
    *
    * @param b - The vector to divide `this` by
    * @returns `this`
    */
-  divide(b: Readonly<Vec4Like>): Vec4;
+  divide(b: Readonly<Vec4Like>): this;
   /**
    * Alias for {@link Vec4.divide}
+   * @category Methods
    */
-  div(b: Readonly<Vec4Like>): Vec4;
+  div(b: Readonly<Vec4Like>): this;
   /**
    * Scales `this` by a scalar number.
    * Equivalent to `Vec4.scale(this, this, b);`
+   * @category Methods
    *
    * @param b - Amount to scale `this` by
    * @returns `this`
    */
-  scale(b: number): Vec4;
+  scale(b: number): this;
   /**
    * Calculates `this` scaled by a scalar value then adds the result to `this`.
    * Equivalent to `Vec4.scaleAndAdd(this, this, b, scale);`
+   * @category Methods
    *
    * @param b - The vector to add to `this`
    * @param scale - The amount to scale `b` by before adding
    * @returns `this`
    */
-  scaleAndAdd(b: Readonly<Vec4Like>, scale: number): Vec4;
+  scaleAndAdd(b: Readonly<Vec4Like>, scale: number): this;
   /**
-   * Calculates the euclidian distance between another {@link Vec4} and `this`.
+   * Calculates the Euclidean distance between another {@link Vec4} and `this`.
    * Equivalent to `Vec4.distance(this, b);`
+   * @category Methods
    *
    * @param b - The vector to calculate the distance to
    * @returns Distance between `this` and `b`
@@ -4271,11 +4447,13 @@ declare class Vec4 extends Float32Array {
   distance(b: Readonly<Vec4Like>): number;
   /**
    * Alias for {@link Vec4.distance}
+   * @category Methods
    */
   dist(b: Readonly<Vec4Like>): number;
   /**
-   * Calculates the squared euclidian distance between another {@link Vec4} and `this`.
+   * Calculates the squared Euclidean distance between another {@link Vec4} and `this`.
    * Equivalent to `Vec4.squaredDistance(this, b);`
+   * @category Methods
    *
    * @param b The vector to calculate the squared distance to
    * @returns Squared distance between `this` and `b`
@@ -4283,32 +4461,37 @@ declare class Vec4 extends Float32Array {
   squaredDistance(b: Readonly<Vec4Like>): number;
   /**
    * Alias for {@link Vec4.squaredDistance}
+   * @category Methods
    */
   sqrDist(b: Readonly<Vec4Like>): number;
   /**
    * Negates the components of `this`.
    * Equivalent to `Vec4.negate(this, this);`
+   * @category Methods
    *
    * @returns `this`
    */
-  negate(): Vec4;
+  negate(): this;
   /**
    * Inverts the components of `this`.
    * Equivalent to `Vec4.inverse(this, this);`
+   * @category Methods
    *
    * @returns `this`
    */
-  invert(): Vec4;
+  invert(): this;
   /**
    * Sets each component of `this` to it's absolute value.
    * Equivalent to `Vec4.abs(this, this);`
+   * @category Methods
    *
    * @returns `this`
    */
-  abs(): Vec4;
+  abs(): this;
   /**
    * Calculates the dot product of this and another {@link Vec4}.
    * Equivalent to `Vec4.dot(this, b);`
+   * @category Methods
    *
    * @param b - The second operand
    * @returns Dot product of `this` and `b`
@@ -4317,10 +4500,11 @@ declare class Vec4 extends Float32Array {
   /**
    * Normalize `this`.
    * Equivalent to `Vec4.normalize(this, this);`
+   * @category Methods
    *
    * @returns `this`
    */
-  normalize(): Vec4;
+  normalize(): this;
   /**
    * @category Static
    *
@@ -4498,7 +4682,7 @@ declare class Vec4 extends Float32Array {
    */
   static scaleAndAdd(out: Vec4Like, a: Readonly<Vec4Like>, b: Readonly<Vec4Like>, scale: number): Vec4Like;
   /**
-   * Calculates the euclidian distance between two {@link Vec4}'s
+   * Calculates the Euclidean distance between two {@link Vec4}'s
    * @category Static
    *
    * @param a - the first operand
@@ -4512,7 +4696,7 @@ declare class Vec4 extends Float32Array {
    */
   static dist(a: Readonly<Vec4Like>, b: Readonly<Vec4Like>): number;
   /**
-   * Calculates the squared euclidian distance between two {@link Vec4}'s
+   * Calculates the squared Euclidean distance between two {@link Vec4}'s
    * @category Static
    *
    * @param a - the first operand
@@ -4675,7 +4859,7 @@ declare class Vec4 extends Float32Array {
    */
   static str(a: Readonly<Vec4Like>): string;
   /**
-   * Returns whether or not the vectors have exactly the same elements in the same position (when compared with ===)
+   * Returns whether the vectors have exactly the same elements in the same position (when compared with ===)
    * @category Static
    *
    * @param a - The first vector.
@@ -4684,7 +4868,7 @@ declare class Vec4 extends Float32Array {
    */
   static exactEquals(a: Readonly<Vec4Like>, b: Readonly<Vec4Like>): boolean;
   /**
-   * Returns whether or not the vectors have approximately the same elements in the same position.
+   * Returns whether the vectors have approximately the same elements in the same position.
    * @category Static
    *
    * @param a - The first vector.

@@ -1,4 +1,7 @@
-// glMatrix - v4.0.0-beta.3
+// gl-matrix - v4.0.0-beta.3 - A high performance matrix and vector library.
+// @author Brandon Jones
+// @author Colin MacKenzie IV
+// @license MIT (https://github.com/toji/gl-matrix/blob/master/LICENSE.md)
 var __defProp = Object.defineProperty;
 var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
 var __getOwnPropNames = Object.getOwnPropertyNames;
@@ -17,7 +20,7 @@ var __copyProps = (to, from, except, desc) => {
 };
 var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
 
-// dist/common/index.js
+// src/common/index.ts
 var common_exports = {};
 __export(common_exports, {
   GLM_EPSILON: () => GLM_EPSILON

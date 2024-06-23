@@ -1,4 +1,7 @@
-// glMatrix - v4.0.0-beta.3
+// gl-matrix - v4.0.0-beta.3 - A high performance matrix and vector library.
+// @author Brandon Jones
+// @author Colin MacKenzie IV
+// @license MIT (https://github.com/toji/gl-matrix/blob/master/LICENSE.md)
 var __defProp = Object.defineProperty;
 var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
 var __getOwnPropNames = Object.getOwnPropertyNames;
@@ -17,7 +20,7 @@ var __copyProps = (to, from, except, desc) => {
 };
 var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
 
-// dist/swizzle/f64/index.js
+// src/swizzle/f64/index.ts
 var f64_exports = {};
 __export(f64_exports, {
   EnableSwizzlesF64: () => EnableSwizzlesF64
@@ -50,13 +53,23 @@ function EnableSwizzlesF64() {
         };
       case 3:
         return function() {
-          return new import_f64.Vec3(this[SWIZZLE_INDEX[swizzle[0]]], this[SWIZZLE_INDEX[swizzle[1]]], this[SWIZZLE_INDEX[swizzle[2]]]);
+          return new import_f64.Vec3(
+            this[SWIZZLE_INDEX[swizzle[0]]],
+            this[SWIZZLE_INDEX[swizzle[1]]],
+            this[SWIZZLE_INDEX[swizzle[2]]]
+          );
         };
       case 4:
         return function() {
-          return new import_f64.Vec4(this[SWIZZLE_INDEX[swizzle[0]]], this[SWIZZLE_INDEX[swizzle[1]]], this[SWIZZLE_INDEX[swizzle[2]]], this[SWIZZLE_INDEX[swizzle[3]]]);
+          return new import_f64.Vec4(
+            this[SWIZZLE_INDEX[swizzle[0]]],
+            this[SWIZZLE_INDEX[swizzle[1]]],
+            this[SWIZZLE_INDEX[swizzle[2]]],
+            this[SWIZZLE_INDEX[swizzle[3]]]
+          );
         };
     }
+    throw new Error("Illegal swizzle length");
   }
   for (const swizzle of VEC2_SWIZZLES) {
     const impl = getSwizzleImpl(swizzle);

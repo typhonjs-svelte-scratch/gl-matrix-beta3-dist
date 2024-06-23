@@ -5,7 +5,7 @@ npm-debug.log
 /.dts
 /.vscode
 /coverage
-/dist
-/docs
+#/dist
+#/docs
 /html
 /node_modules
