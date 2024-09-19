@@ -1,7 +1,7 @@
 # Set line endings.
 * text eol=lf
 
-# Explicitly mark binary files to prevent line ending conversion.
+# Explicitly mark binary files.
 *.png binary
 *.jpg binary
 *.ico binary
